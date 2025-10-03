@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Miliere Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="./js/custom.js"></script>
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen bg-cover bg-center" style="background-image: url('./assets/banner.avif');">
+        <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay for better text contrast -->
+
+        <!-- Navbar Section -->
+        <nav class="w-full z-50 shadow-lg relative">
+            <div class="bg-[#014784] p-2"></div>
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between items-center py-4">
+                    <!-- Logo -->
+                    <a href="/">
+                        <img src="./assets/nav-logo.avif" alt="The Miliere Group Logo" class="object-cover w-40">
+                    </a>
+
+                    <!-- Agent Links Button (Visible on smaller screens) -->
+                    <div class="relative">
+                        <div class="text-right py-4">
+                            <a href="#" class="text-white px-4 py-2">
+                                Agent Links
+                            </a>
+                        </div>
+
+                        <!-- Navbar Links -->
+                        <div class="hidden md:flex space-x-6 border-t-2 border-b-2 border-white">
+                            <a href="#" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Home</a>
+                            <a href="#" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Vision &
+                                Mission</a>
+                            <a href="#" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Products &
+                                Providers</a>
+                            <a href="#" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Platform &
+                                Model</a>
+                            <a href="#" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Contact</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Content -->
+        <div
+            class="relative z-10 container mx-auto px-4 flex justify-center items-center h-full text-center text-white">
+            <div>
+                <h1
+                    class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-snug sm:leading-tight md:leading-tight mb-4 tracking-wide">
+                    The Miliere Group
+                </h1>
+                <h2 class="text-xl sm:text-2xl md:text-5xl lg:text-6xl italic mb-4 sm:mb-5 md:mb-6 tracking-wide">
+                    Empowering Everyday Families
+                </h2>
+                <h2 class="text-xl sm:text-2xl md:text-5xl lg:text-6xl italic mb-4 sm:mb-5 md:mb-6 tracking-wide">
+                    with Trusted Financial Guidance
+                </h2>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- discover content -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-300">
+
+                <!-- Card 1 -->
+                <div class="px-6 py-8">
+                    <h3 class="text-sm font-semibold text-gray-400 uppercase mb-2">Discover How We're</h3>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4">Making a Difference</h4>
+                    <p class="text-gray-600 mb-6">
+                        Explore how our team of leaders are helping <span class="underline">everyday families</span>
+                        get the financial education and tools they need.
+                    </p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">See the Difference →</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="px-6 py-8">
+                    <h3 class="text-sm font-semibold text-gray-400 uppercase mb-2">Browse Our</h3>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4">Products & Providers</h4>
+                    <p class="text-gray-600 mb-6">
+                        The Miliare Group is trusted by some of the <span class="underline">industry's top
+                            companies</span>
+                        to present their products to families and businesses.
+                    </p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">See the Difference →</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="px-6 py-8">
+                    <h3 class="text-sm font-semibold text-gray-400 uppercase mb-2">Take a Tour of Our</h3>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4">Business Platform</h4>
+                    <p class="text-gray-600 mb-6">
+                        Learn what makes our <span class="underline">business model</span> so innovative, and see for
+                        yourself how it could set you up for success.
+                    </p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">See the Difference →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Slider Section -->
+    <section class="py-16 bg-white">
+        <div class="mx-auto w-full px-4" x-data="reviewSlider()" x-init="autoSlide()">
+
+            <h2 class="text-3xl font-bold text-center mb-8">Miliere Group Reviews</h2>
+
+            <div class="relative" @touchstart="startTouch($event)" @touchend="endTouch($event)">
+
+                <!-- Reviews Cards Slider -->
+                <div class="flex overflow-hidden space-x-2">
+                    <template x-for="(review, index) in reviews" :key="index">
+                        <div x-show="isVisible(index)"
+                            class="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/5 px-2 transition-all duration-300">
+
+                            <div class="bg-[#1F5D94] text-white p-6 rounded-lg shadow-lg flex flex-col h-full">
+                                <div class="flex items-center mb-4">
+                                    <img :src="review.image" alt="Avatar" class="w-12 h-12 rounded-full mr-4">
+                                    <div>
+                                        <h3 class="font-semibold text-lg" x-text="review.name"></h3>
+                                        <div class="text-yellow-400">
+                                            <span x-text="''.padStart(review.rating, '★')"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Review text -->
+                                <p class="text-white text-base mb-4 truncate"
+                                    x-text="review.review.substring(0, 100) + (review.review.length > 100 ? '...' : '')">
+                                </p>
+                                <!-- Read More Button -->
+                                <button @click="openModal(review)" class="text-white font-bold text-left">Read More
+                                    →</button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Left & Right Arrows -->
+                <button @click="prev()"
+                    class="absolute left-2 sm:left-6 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full">
+                    &#10094;
+                </button>
+                <button @click="next()"
+                    class="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full">
+                    &#10095;
+                </button>
+            </div>
+
+            <!-- Modal -->
+
+            <!-- Modal -->
+            <div x-show="modalOpen" @click.self="closeModal()" x-transition.opacity
+                class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+
+                <template x-if="selectedReview">
+                    <div @click.stop x-transition class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full relative">
+
+                        <!-- Close Button -->
+                        <button @click="closeModal()" class="absolute top-4 right-4 text-xl font-bold text-gray-700">
+                            &times;
+                        </button>
+
+                        <!-- Full Name & Rating -->
+                        <h3 class="text-xl font-semibold mb-4" x-text="selectedReview.name"></h3>
+                        <div class="text-yellow-400 mb-4">
+                            <span x-text="''.padStart(selectedReview.rating, '★')"></span>
+                        </div>
+
+                        <!-- FULL REVIEW CONTENT -->
+                        <p class="text-gray-700 text-base" x-text="selectedReview.review"></p>
+                    </div>
+                </template>
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+    <section class="py-16 bg-[#072C53] text-white">
+        <div class="mx-auto w-full px-4 sm:px-6 lg:px-12">
+
+            <!-- Vision and Mission Section -->
+            <div class="w-full flex flex-col md:flex-row justify-center gap-12 md:gap-16">
+
+                <!-- Vision Section -->
+                <div class="flex flex-col items-center md:items-start w-full md:w-1/3 mb-8 md:mb-0">
+                    <div
+                        class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-3 mb-4 border-l-4 border-white pl-4 w-full">
+                        <img src="./assets/vision.avif" alt="Vision Icon"
+                            class="w-16 h-16 rounded-full border-2 border-white p-2 flex-shrink-0">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-center sm:text-left">Our Vision</h2>
+                    </div>
+                    <p class="text-base sm:text-lg leading-relaxed text-center md:text-left">
+                        To give people from all backgrounds the power to become financial services business owners, so
+                        that every family can access financial knowledge, products, and resources to prepare for a
+                        better future.
+                    </p>
+                </div>
+
+                <!-- Mission Section -->
+                <div class="flex flex-col items-center md:items-start w-full md:w-1/3 mb-8 md:mb-0">
+                    <div
+                        class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-3 mb-4 border-l-4 border-white pl-4 w-full">
+                        <img src="./assets/mission.avif" alt="Mission Icon"
+                            class="w-16 h-16 rounded-full border-2 border-white p-2 flex-shrink-0">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-center sm:text-left">Our Mission</h2>
+                    </div>
+                    <p class="text-base sm:text-lg leading-relaxed text-center md:text-left">
+                        To empower financial services entrepreneurs with the tools they need to help families have
+                        better futures.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Quote Section with Background Image -->
+            <div class="mt-16 relative text-center">
+                <img src="./assets/mission-vission-bg.avif" alt="Family Interaction"
+                    class="w-full h-[350px] sm:h-[400px] md:h-[500px] lg:h-[600px] object-cover rounded-lg">
+
+                <!-- Overlay Quote -->
+                <div
+                    class="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2 px-4">
+                    <blockquote
+                        class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-serif text-center text-white p-6 sm:p-8 bg-blue-500 bg-opacity-70 rounded-xl shadow-lg">
+                        "Having somewhere to go is home. Having someone to love is family. And having both is a
+                        blessing."
+                    </blockquote>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Our Commitment Section -->
+    <section class=" text-black py-20 px-6 md:px-16 lg:px-32">
+        <div class="max-w-6xl mx-auto text-center">
+
+            <!-- Heading -->
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-wider mb-6">
+                Our Commitment
+            </h2>
+
+            <!-- Description -->
+            <p class="text-base sm:text-lg md:text-xl leading-relaxed max-w-4xl mx-auto text-black-200">
+                As a Miliere Group financial professional, we focus on you and your needs, goals, and objectives.
+                We strive to help individuals, families, and businesses create a sound strategy for the future focused
+                on reducing debt, saving money, protecting the things that are most valuable to you, and helping
+                entrepreneurs reach their dreams.
+            </p>
+
+            <!-- Optional Animated Accent Line (Tailwind + Alpine) -->
+            <div class="mt-10 flex justify-center">
+                <div x-data="{ animate: false }" x-intersect:enter="animate = true"
+                    class="w-24 h-1 bg-black rounded-full transition-all duration-1000"
+                    :class="animate ? 'w-64 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500' : ''">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4">
+
+            <!-- Tabs Navigation -->
+            <div x-data="{ activeTab: 0 }" class="max-w-6xl mx-auto">
+                <div class="flex flex-wrap justify-center border-b border-gray-300 mb-8">
+                    <button class="px-6 py-3 font-semibold text-gray-700 border-b-4 transition-all duration-300"
+                        :class="activeTab === 0 ? 'border-blue-500 text-blue-600' : 'border-transparent hover:text-blue-500'"
+                        @click="activeTab = 0">
+                        THE POWER OF CHOICE FOR CLIENTS
+                    </button>
+                    <button class="px-6 py-3 font-semibold text-gray-700 border-b-4 transition-all duration-300"
+                        :class="activeTab === 1 ? 'border-blue-500 text-blue-600' : 'border-transparent hover:text-blue-500'"
+                        @click="activeTab = 1">
+                        SIX STEPS TO FINANCIAL INDEPENDENCE
+                    </button>
+                    <button class="px-6 py-3 font-semibold text-gray-700 border-b-4 transition-all duration-300"
+                        :class="activeTab === 2 ? 'border-blue-500 text-blue-600' : 'border-transparent hover:text-blue-500'"
+                        @click="activeTab = 2">
+                        OUR OPPORTUNITY FOR ENTREPRENEURS
+                    </button>
+                </div>
+
+                <!-- Tabs Content -->
+                <div class="space-y-12">
+
+                    <!-- Tab 1 -->
+                    <div x-show="activeTab === 0"
+                        class="flex flex-col lg:flex-row items-center gap-12 transition-all duration-500">
+                        <div class="lg:w-1/2 space-y-4">
+                            <h2 class="text-3xl lg:text-4xl font-bold text-gray-800">Our platform offers you the power
+                                of choice and flexibility</h2>
+                            <p class="text-gray-600 text-lg">
+                                Through agreements with top insurance and financial services providers, we offer a wide
+                                selection of products to fit your needs and goals. Build a diverse strategy to prepare
+                                for your future and safeguard your lifestyle.
+                            </p>
+                        </div>
+                        <div class="lg:w-1/2">
+                            <img src="./assets/media-3.jpg" alt="family reviewing their financial goals"
+                                class="rounded-xl shadow-lg w-full object-cover">
+                        </div>
+                    </div>
+
+                    <!-- Tab 2 -->
+                    <div x-show="activeTab === 1"
+                        class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center transition-all duration-500">
+                        <!-- Step 1 -->
+                        <div class="space-y-4">
+                            <img src="./assets/cash-flow.png" alt="Cash Flow" class="mx-auto h-12 w-12">
+                            <h3 class="text-xl font-semibold text-blue-600">Cash Flow</h3>
+                            <p class="text-gray-600">Manage your money effectively and track every dollar.</p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="space-y-4">
+                            <img src="./assets/debt.png" alt="Debt Management" class="mx-auto h-12 w-12">
+                            <h3 class="text-xl font-semibold text-blue-600">Debt Management</h3>
+                            <p class="text-gray-600">Plan to reduce debt efficiently while protecting your finances.</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="space-y-4">
+                            <img src="./assets/fund.png" alt="Emergency Fund" class="mx-auto h-12 w-12">
+                            <h3 class="text-xl font-semibold text-blue-600">Emergency Fund</h3>
+                            <p class="text-gray-600">Prepare for unexpected expenses without stress.</p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="space-y-4">
+                            <img src="./assets/protection.avif" alt="Proper Protection" class="mx-auto h-12 w-12">
+                            <h3 class="text-xl font-semibold text-blue-600">Proper Protection</h3>
+                            <p class="text-gray-600">Safeguard your assets and income with insurance and risk
+                                management.</p>
+                        </div>
+
+                        <!-- Step 5 -->
+                        <div class="space-y-4">
+                            <img src="./assets/wealth.avif" alt="Build Wealth" class="mx-auto h-12 w-12">
+                            <h3 class="text-xl font-semibold text-blue-600">Build Wealth</h3>
+                            <p class="text-gray-600">Invest wisely and grow your financial resources for the future.</p>
+                        </div>
+
+                        <!-- Step 6 -->
+                        <div class="space-y-4">
+                            <img src="./assets/preserve.avif" alt="Preserve Wealth" class="mx-auto h-12 w-12">
+                            <h3 class="text-xl font-semibold text-blue-600">Preserve Wealth</h3>
+                            <p class="text-gray-600">Protect and maintain the wealth you’ve built for long-term
+                                stability.</p>
+                        </div>
+                    </div>
+
+
+                    <!-- Tab 3 -->
+                    <div x-show="activeTab === 2"
+                        class="flex flex-col lg:flex-row items-center justify-around gap-12 transition-all duration-500">
+                        <div class="lg:w-1/2 space-y-4">
+                            <h2 class="text-3xl lg:text-4xl font-bold text-gray-800">Our Platform. Your Dreams.</h2>
+                            <p class="text-gray-600 text-lg">
+                                The Miliare Group opens the door to success for anyone with the spirit and desire to
+                                improve their life as a financial professional. Access a robust compensation plan and
+                                world-class business platform from day one.
+                            </p>
+                        </div>
+                        <div class="lg:w-1/4 grid grid-cols-2 gap-4">
+                            <img src="./assets/platform-1.jpg" alt="Success"
+                                class="rounded-lg shadow-md w-full object-cover">
+                            <img src="./assets/platform-2.jpg" alt="Excitement"
+                                class="rounded-lg shadow-md w-full object-cover">
+                            <img src="./assets/platform-3.jpg" alt="Collaboration"
+                                class="rounded-lg shadow-md w-full object-cover">
+                            <img src="./assets/platform-4.png" alt="Briefcase"
+                                class="rounded-lg shadow-md w-full object-cover">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Creative How We Help Section -->
+    <section class="relative bg-gradient-to-b from-blue-50 to-white py-24 px-6 md:px-16 lg:px-32">
+        <div class="max-w-6xl mx-auto text-center mb-16">
+            <p class="text-lg sm:text-xl md:text-2xl font-semibold tracking-wider text-gray-700">
+                There are two primary ways we hope to assist with your financial future.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 relative">
+
+            <!-- Card 1 -->
+            <div
+                class="relative bg-gradient-to-br from-white via-blue-50 to-white rounded-3xl shadow-2xl overflow-hidden p-8 flex flex-col items-center transform transition hover:scale-105 duration-500">
+                <!-- Floating Number -->
+                <div
+                    class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-blue-600 text-white font-extrabold text-3xl flex items-center justify-center rounded-full shadow-xl z-10">
+                    1
+                </div>
+                <!-- Image Overlap -->
+                <img src="./assets/media-1.png" alt="Family"
+                    class="w-3/4 md:w-full h-64 object-cover rounded-xl -mt-10 shadow-lg">
+                <!-- Title -->
+                <h3 class="text-2xl font-bold mt-6 mb-3 text-center text-gray-900">
+                    Reach your personal financial goals
+                </h3>
+                <!-- Description -->
+                <p class="text-gray-600 text-center leading-relaxed text-base md:text-lg">
+                    How much money will you need to live the way you do now when you're retired – or to provide for your
+                    family if you were to lose your income? With knowledge, strategy, and action, we can help you reach
+                    your goals and secure financial independence.
+                </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+                class="relative bg-gradient-to-br from-white via-blue-50 to-white rounded-3xl shadow-2xl overflow-hidden p-8 flex flex-col items-center transform transition hover:scale-105 duration-500">
+                <!-- Floating Number -->
+                <div
+                    class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-blue-600 text-white font-extrabold text-3xl flex items-center justify-center rounded-full shadow-xl z-10">
+                    2
+                </div>
+                <!-- Image Overlap -->
+                <img src="./assets/media-2.png" alt="Business"
+                    class="w-3/4 md:w-full h-64 object-cover rounded-xl -mt-10 shadow-lg">
+                <!-- Title -->
+                <h3 class="text-2xl font-bold mt-6 mb-3 text-center text-gray-900">
+                    Build a rewarding business
+                </h3>
+                <!-- Description -->
+                <p class="text-gray-600 text-center leading-relaxed text-base md:text-lg">
+                    Become your own boss and help others achieve financial independence without quitting your current
+                    job. We’ll guide you step by step to build a future that’s financially secure and fulfilling.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Decorative Circles -->
+        <div
+            class="hidden md:block absolute top-0 left-0 w-32 h-32 bg-blue-200 rounded-full opacity-30 -translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div
+            class="hidden md:block absolute bottom-0 right-0 w-40 h-40 bg-blue-300 rounded-full opacity-30 translate-x-1/2 translate-y-1/2">
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="bg-[#072C53] py-20 px-6 md:px-16 lg:px-32 text-white relative">
+        <div class="max-w-4xl mx-auto flex flex-col items-center text-center space-y-6">
+
+            <!-- Quote Icon -->
+            <div class="bg-white bg-opacity-20 rounded-full p-4 mb-4">
+                <img src="./assets/quote-icon.png" alt="Quote icon" class="w-16 h-16 object-contain">
+            </div>
+
+            <!-- Quote Lines -->
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-light leading-snug tracking-wide">
+                Money won't solve all your problems. But it could solve your
+            </h2>
+
+            <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight">
+                money problem.
+            </h2>
+
+            <!-- Decorative underline -->
+            <div class="w-20 h-1 bg-white rounded-full mt-4"></div>
+        </div>
+
+        <!-- Optional subtle background pattern -->
+        <div class="absolute top-0 left-0 w-32 h-32 bg-white opacity-10 rounded-full -translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-40 h-40 bg-white opacity-10 rounded-full translate-x-1/2 translate-y-1/2">
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-[#014785] text-white py-16 px-6 md:px-16 lg:px-32">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12">
+
+            <!-- Logo & Agent Login -->
+            <div class="flex flex-col items-center md:items-start space-y-4">
+                <a href="https://www.mymiliaregroup.com" target="_self">
+                    <img src="https://static.wixstatic.com/media/46dd91_4ba420c2ecaa4cf4a154cd9c3132fbdd~mv2.png"
+                        alt="Miliare Group Logo" class="w-36 md:w-40 object-contain">
+                </a>
+                <a href="https://www.mywfg.com/" target="_blank"
+                    class="bg-white text-[#014785] font-semibold py-2 px-6 rounded-full hover:bg-gray-200 transition">
+                    Agent Login ›
+                </a>
+            </div>
+
+            <!-- Legal & Disclaimers -->
+            <div class="flex-1 text-center md:text-left space-y-2 text-sm leading-relaxed">
+                <p>© 2025 The Miliare Group</p>
+                <p>The Miliare Group is an organization comprised of individuals associated with World Financial Group
+                    Insurance Agency, LLC and World Financial Group, Inc., but it is not an affiliated company of WFG.
+                </p>
+                <p>These agents offer insurance products through World Financial Group Insurance Agency LLC, World
+                    Financial Group Insurance Agency of Hawaii, Inc., World Financial Group Insurance Agency of
+                    Massachusetts, Inc., and/or WFG Insurance Agency of Puerto Rico, Inc. – collectively WFGIA.</p>
+                <p>WFGIA Headquarters: 6400 C Street SW, Cedar Rapids IA 52499. Phone: 770.453.9300. Miliare Group
+                    Headquarters: 2280 Wardlow Cir # 205, Corona, CA 92880</p>
+                <p>Tax and Legal Disclosure: Neither World Financial Group nor its agents may provide tax or legal
+                    advice. Consult your own independent tax/legal professional.</p>
+                <p>SUCCESS / RESULTS FOOTNOTE: Many people have experienced various levels of success with WFG.
+                    Individual results may vary and are not representative of all participants.</p>
+                <p>3508958</p>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="flex justify-center md:justify-end items-start mt-4 md:mt-0">
+                <a href="#top"
+                    class="bg-white text-[#014785] p-3 rounded-full hover:bg-gray-200 transition flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-6 h-6">
+                        <path fill="currentColor"
+                            d="M132.5 54.009L100 20 67.5 54.009l8.692 8.526 17.023-17.471V180h13.57V44.725l17.023 17.81 8.692-8.526z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
