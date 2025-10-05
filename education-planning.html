@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wealth Builders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] md:min-h-[75vh] bg-cover bg-center"
+        style="background-image: url('./assets/education-planning/banner.jpg');">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#014784]/20 to-[#014784]/80"></div>
+
+        <!-- Navbar Section -->
+        <nav class="w-full z-50 shadow-lg relative">
+            <div class="bg-[#014784] p-2"></div>
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-around items-center py-4">
+                    <!-- Logo -->
+                    <a href="#">
+                        <img src="./assets/transparent-logo.png" alt="The Wealth Builders Logo"
+                            class="object-cover w-32 md:w-40">
+                    </a>
+
+                    <!-- Agent Links Button (Visible on smaller screens) -->
+                    <div class="relative">
+                        <div class="text-right py-4">
+                            <a href="#" class="text-white px-4 py-2">
+                                Agent Links
+                            </a>
+                        </div>
+
+                        <!-- Navbar Links -->
+                        <div class="hidden md:flex space-x-6 border-t-2 border-b-2 border-white items-center">
+                            <a href="./index.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Home</a>
+                            <a href="./vision-mission.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Vision &
+                                Mission</a>
+                            <a href="./products-providers.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Products &
+                                Providers</a>
+                            <a href="./platform-model.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Platform &
+                                Model</a>
+
+                            <!-- Alpine-powered dropdown -->
+                            <div x-data="{ open: false, timeout: null }"
+                                @mouseenter="clearTimeout(timeout); open = true"
+                                @mouseleave="timeout = setTimeout(() => open = false, 100)" class="relative">
+                                <button @click="open = !open" @keydown.escape.window="open = false"
+                                    :aria-expanded="open.toString()" aria-haspopup="true"
+                                    class="text-white text-lg font-semibold hover:text-gray-400 py-2 flex items-center focus:outline-none">
+                                    Client &amp; Solutions
+                                    <svg class="w-4 h-4 ml-1 transform" :class="open ? 'rotate-180' : ''" fill="none"
+                                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+
+                                <!-- menu -->
+                                <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-150"
+                                    x-transition:enter-start="opacity-0 transform scale-95"
+                                    x-transition:enter-end="opacity-100 transform scale-100"
+                                    x-transition:leave="transition ease-in duration-100"
+                                    x-transition:leave-start="opacity-100 transform scale-100"
+                                    x-transition:leave-end="opacity-0 transform scale-95" @click.away="open = false"
+                                    class="absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-lg shadow-lg z-50 ring-1 ring-black ring-opacity-5">
+                                    <a href="./products-services.html"
+                                        class="block px-4 py-3 hover:bg-gray-100">Products &amp; Services</a>
+                                    <a href="./retirement-strategies.html"
+                                        class="block px-4 py-3 hover:bg-gray-100">Retirement Strategies</a>
+                                    <a href="./education-planning.html"
+                                        class="block px-4 py-3 hover:bg-gray-100">Education Planning</a>
+                                    <a href="./business-strategies.html" class="block px-4 py-3 hover:bg-gray-100">Business Strategies</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Estate Preservation</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Client Testimonials</a>
+                                </div>
+                            </div>
+
+                            <a href="./contact.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Contact</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section: Retirement Strategies -->
+        <section class="relative text-gray-100 py-24 overflow-hidden">
+
+
+            <div class="relative z-10 container mx-auto px-6 flex flex-col items-center justify-center text-center">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wide mb-6">
+                    Education <span class="text-yellow-500">Planning</span>
+                </h1>
+
+                <p class="max-w-3xl text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
+                    Although students may be able to obtain grants, scholarships or other types of financial aid,
+                    without a proper education savings
+                    plan the cost of post-secondary education can put a strain on a household’s savings—partner with a
+                    WFG agent to start outlining a plan for
+                    higher education costs today.
+                </p>
+
+                <p class="max-w-3xl text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
+                    WFG agents can help create a college savings plan based on your family’s budget. Your agents are
+                    prepared to show how an
+                    educational plan can help support the cost of k-12 private tuition and fees for college.
+                </p>
+            </div>
+        </section>
+
+
+    </section>
+
+    <!-- Planning Ahead Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Left Content -->
+            <div>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-8">
+                    Planning <span class="text-yellow-500">Ahead</span>
+                </h2>
+
+                <ul class="list-disc list-inside space-y-4 text-gray-700 leading-relaxed">
+                    <li>
+                        The cost of education remains a significant financial challenge for many families, and many
+                        underestimate the price.<sup>1</sup>
+                    </li>
+                    <li>
+                        College tuition has steadily risen over recent years, and the 2023-2024 school year is no
+                        exception. The average in-state tuition at a public college is $10,662 and out-of-state is
+                        $23,630. Private college tuition is $42,162.<sup>1</sup>
+                    </li>
+                    <li>
+                        Between 1977 and 2024: College tuition experienced an average inflation rate of <strong>6.08%
+                            per year</strong>. Prices for college tuition and fees are 1,502.25% higher in 2024 versus
+                        1977 (a $300,450.36 difference in value).<sup>2</sup>
+                    </li>
+                </ul>
+
+                <div class="mt-6 text-sm text-gray-500">
+                    <p>1 “What You Need to Know About College Tuition Costs,” Emma Kerr and Sarah Wood, U.S. News &
+                        World Report, September 20, 2023.</p>
+                    <p>2 Consumer Price Index, U.S. Bureau of Labor Statistics, 2020</p>
+                </div>
+            </div>
+
+            <!-- Right Image -->
+            <div class="flex justify-center">
+                <img src="./assets/education-planning/education-planning-graduates.webp" alt="Two graduates celebrating"
+                    class="rounded-2xl shadow-xl w-full max-w-md lg:max-w-lg object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- How a WFG Agent Can Help -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Left Image -->
+            <div class="flex justify-center lg:order-1 order-2">
+                <img src="./assets/education-planning/college-student-with-mom.webp" alt="College student with mom"
+                    class="rounded-2xl shadow-xl w-full max-w-md lg:max-w-lg object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+
+            <!-- Right Content -->
+            <div class="lg:order-2 order-1">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-8">
+                    <span class="text-yellow-500">How a WFG Agent</span> Can Help
+                </h2>
+
+                <ul class="list-disc list-inside space-y-4 text-gray-700 leading-relaxed">
+                    <li>
+                        A licensed WFG agent can help your family determine how much you’ll need to save for your kids’
+                        education and design a plan that considers the type of college they plan to attend and expected
+                        inflation rates.
+                    </li>
+                    <li>
+                        Our agents can educate families about different college savings plans available to them, review
+                        financial aid eligibility, and guide them through the financial aid process.
+                    </li>
+                    <li>
+                        In addition to higher education planning solutions, our team can show you how to save for K-12
+                        and other education expenses before college.
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Frequently Asked Questions Section -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-6 lg:px-12">
+
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900">
+                    Frequently Asked <span class="text-yellow-500">Questions</span>
+                </h2>
+                <p class="mt-4 text-gray-700 max-w-2xl mx-auto">
+                    Have questions about education planning? Our licensed WFG agents are here to guide you.
+                </p>
+            </div>
+
+            <!-- FAQ Items -->
+            <div class="space-y-6">
+
+                <!-- FAQ Item 1 -->
+                <div class="border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button
+                        class="w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center focus:outline-none faq-toggle">
+                        <span class="font-semibold text-gray-800">When should I start saving for my child's
+                            education?</span>
+                        <span class="text-gray-500 transition-transform duration-300 transform faq-icon">+</span>
+                    </button>
+                    <div class="px-6 py-4 text-gray-700 hidden faq-content">
+                        Ideally, you should begin saving for your child's education as soon as possible. The cost of a
+                        college education can be significant, and starting early allows you to take advantage of
+                        compound interest. A WFG independent agent can also help explore scholarships, grants, and
+                        student loans if your child is close to college age.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button
+                        class="w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center focus:outline-none faq-toggle">
+                        <span class="font-semibold text-gray-800">How much should I save for education?</span>
+                        <span class="text-gray-500 transition-transform duration-300 transform faq-icon">+</span>
+                    </button>
+                    <div class="px-6 py-4 text-gray-700 hidden faq-content">
+                        The cost of a college education varies depending on the type of institution – public or private,
+                        in-state or out-of-state – and the number of years needed to complete the degree. A WFG agent
+                        can help estimate costs, factor in inflation, and adjust your strategy regularly based on your
+                        family's financial situation and your child's plans.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button
+                        class="w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center focus:outline-none faq-toggle">
+                        <span class="font-semibold text-gray-800">Can education loans be a substitute for saving?</span>
+                        <span class="text-gray-500 transition-transform duration-300 transform faq-icon">+</span>
+                    </button>
+                    <div class="px-6 py-4 text-gray-700 hidden faq-content">
+                        Education loans can help cover college expenses if you don’t have enough savings, but they are
+                        not a one-to-one substitute. Relying only on loans may lead to significant debt and financial
+                        strain after graduation. Interest can also increase the overall cost of education.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button
+                        class="w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center focus:outline-none faq-toggle">
+                        <span class="font-semibold text-gray-800">How can I save for education while managing other
+                            financial goals?</span>
+                        <span class="text-gray-500 transition-transform duration-300 transform faq-icon">+</span>
+                    </button>
+                    <div class="px-6 py-4 text-gray-700 hidden faq-content">
+                        Balancing education savings with other priorities like retirement, raising a child, and buying a
+                        home is common. WFG’s independent agents can help you create a budget considering income,
+                        expenses, and long-term goals, making it easier to allocate your spending each month.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- We Are Here to Help Section -->
+    <section class="bg-gray-50 py-20">
+        <div class="container mx-auto px-6 lg:px-12 text-center">
+
+            <!-- Map Image -->
+            <div class="mb-12 flex justify-center">
+                <img src="./assets/retirement-strategies/map-lines-wfg.webp" alt="Map of WFG locations"
+                    class="w-full max-w-2xl rounded-xl object-cover">
+            </div>
+
+            <!-- Section Header -->
+            <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
+                We Are <span class="text-yellow-500">Here to Help</span>
+            </h2>
+
+            <!-- Description -->
+            <p class="text-gray-700 text-lg max-w-3xl mx-auto mb-8">
+                Need help choosing products and services to pursue your financial goals? Our financial professionals are
+                standing by with the insight and tools you need to put them within reach.
+            </p>
+
+            <!-- Call to Action -->
+            <a href="https://www.worldfinancialgroup.com/locate-an-agent"
+                class="inline-block bg-yellow-500 text-gray-900 font-semibold px-8 py-4 rounded-lg shadow hover:bg-yellow-600 transition-colors duration-300">
+                Get Started
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-[#014785] text-white py-16 px-6 md:px-16 lg:px-32">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12">
+
+            <!-- Logo & Agent Login -->
+            <div class="flex flex-col items-center space-y-4">
+                <a href="#" target="_self">
+                    <img src="./assets/transparent-logo.png" alt="Miliare Group Logo"
+                        class="w-40 md:w-48 object-contain">
+                </a>
+                <a href="#" target="_blank"
+                    class="bg-white text-[#014785] font-semibold py-2 px-6 rounded-full hover:bg-gray-200 transition">
+                    Agent Login ›
+                </a>
+            </div>
+
+            <!-- Legal & Disclaimers -->
+            <div class="flex-1 text-center md:text-left space-y-2 text-sm leading-relaxed">
+                <p>© 2025 The Miliare Group</p>
+                <p>The Miliare Group is an organization comprised of individuals associated with World Financial Group
+                    Insurance Agency, LLC and World Financial Group, Inc., but it is not an affiliated company of WFG.
+                </p>
+                <p>These agents offer insurance products through World Financial Group Insurance Agency LLC, World
+                    Financial Group Insurance Agency of Hawaii, Inc., World Financial Group Insurance Agency of
+                    Massachusetts, Inc., and/or WFG Insurance Agency of Puerto Rico, Inc. – collectively WFGIA.</p>
+                <p>WFGIA Headquarters: 6400 C Street SW, Cedar Rapids IA 52499. Phone: 770.453.9300. Miliare Group
+                    Headquarters: 2280 Wardlow Cir # 205, Corona, CA 92880</p>
+                <p>Tax and Legal Disclosure: Neither World Financial Group nor its agents may provide tax or legal
+                    advice. Consult your own independent tax/legal professional.</p>
+                <p>SUCCESS / RESULTS FOOTNOTE: Many people have experienced various levels of success with WFG.
+                    Individual results may vary and are not representative of all participants.</p>
+                <p>3508958</p>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="flex justify-center md:justify-end items-start mt-4 md:mt-0">
+                <a href="#top"
+                    class="bg-white text-[#014785] p-3 rounded-full hover:bg-gray-200 transition flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-6 h-6">
+                        <path fill="currentColor"
+                            d="M132.5 54.009L100 20 67.5 54.009l8.692 8.526 17.023-17.471V180h13.57V44.725l17.023 17.81 8.692-8.526z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FAQ Toggle Script -->
+    <script>
+        const toggles = document.querySelectorAll('.faq-toggle');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('.faq-icon');
+                content.classList.toggle('hidden');
+                icon.textContent = content.classList.contains('hidden') ? '+' : '−';
+            });
+        });
+    </script>
+</body>
+
+</html>

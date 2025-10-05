@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wealth Builders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] md:min-h-[75vh] bg-cover bg-center"
+        style="background-image: url('./assets/retirement-strategies/banner.jpg');">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#014784]/20 to-[#014784]/80"></div>
+
+        <!-- Navbar Section -->
+        <nav class="w-full z-50 shadow-lg relative">
+            <div class="bg-[#014784] p-2"></div>
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-around items-center py-4">
+                    <!-- Logo -->
+                    <a href="#">
+                        <img src="./assets/transparent-logo.png" alt="The Wealth Builders Logo"
+                            class="object-cover w-32 md:w-40">
+                    </a>
+
+                    <!-- Agent Links Button (Visible on smaller screens) -->
+                    <div class="relative">
+                        <div class="text-right py-4">
+                            <a href="#" class="text-white px-4 py-2">
+                                Agent Links
+                            </a>
+                        </div>
+
+                        <!-- Navbar Links -->
+                        <div class="hidden md:flex space-x-6 border-t-2 border-b-2 border-white items-center">
+                            <a href="./index.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Home</a>
+                            <a href="./vision-mission.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Vision &
+                                Mission</a>
+                            <a href="./products-providers.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Products &
+                                Providers</a>
+                            <a href="./platform-model.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Platform &
+                                Model</a>
+
+                            <!-- Alpine-powered dropdown -->
+                            <div x-data="{ open: false, timeout: null }"
+                                @mouseenter="clearTimeout(timeout); open = true"
+                                @mouseleave="timeout = setTimeout(() => open = false, 100)" class="relative">
+                                <button @click="open = !open" @keydown.escape.window="open = false"
+                                    :aria-expanded="open.toString()" aria-haspopup="true"
+                                    class="text-white text-lg font-semibold hover:text-gray-400 py-2 flex items-center focus:outline-none">
+                                    Client &amp; Solutions
+                                    <svg class="w-4 h-4 ml-1 transform" :class="open ? 'rotate-180' : ''" fill="none"
+                                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+
+                                <!-- menu -->
+                                <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-150"
+                                    x-transition:enter-start="opacity-0 transform scale-95"
+                                    x-transition:enter-end="opacity-100 transform scale-100"
+                                    x-transition:leave="transition ease-in duration-100"
+                                    x-transition:leave-start="opacity-100 transform scale-100"
+                                    x-transition:leave-end="opacity-0 transform scale-95" @click.away="open = false"
+                                    class="absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-lg shadow-lg z-50 ring-1 ring-black ring-opacity-5">
+                                    <a href="./products-services.html"
+                                        class="block px-4 py-3 hover:bg-gray-100">Products &amp; Services</a>
+                                    <a href="./retirement-strategies.html"
+                                        class="block px-4 py-3 hover:bg-gray-100">Retirement Strategies</a>
+                                    <a href="./education-planning.html" class="block px-4 py-3 hover:bg-gray-100">Education Planning</a>
+                                    <a href="./business-strategies.html" class="block px-4 py-3 hover:bg-gray-100">Business Strategies</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Estate Preservation</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Client Testimonials</a>
+                                </div>
+                            </div>
+
+                            <a href="./contact.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Contact</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section: Retirement Strategies -->
+        <section class="relative text-gray-100 py-24 overflow-hidden">
+
+
+            <div class="relative z-10 container mx-auto px-6 flex flex-col items-center justify-center text-center">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wide mb-6">
+                    Retirement <span class="text-yellow-500">Strategies</span>
+                </h1>
+
+                <p class="max-w-3xl text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
+                    Coming up with a retirement savings plan of your own can be stressful. No matter how you plan to
+                    spend your years in retirement, you don’t want to worry about a lack of income. Retirement
+                    planning shouldn’t be an afterthought but rather a focus from as early as your 20s. Our licensed
+                    agents are here to help you create a personalized retirement strategy tailored to your goals,
+                    ensuring you stay on track for a financially secure future.
+                </p>
+
+                <a href="#contact"
+                    class="inline-block mt-4 px-10 py-4 text-lg font-semibold rounded-full border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-[#23383E] transition-all duration-300 shadow-md">
+                    Start Planning Today
+                </a>
+            </div>
+
+            <!-- Decorative Gold Accent -->
+            <div
+                class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600">
+            </div>
+        </section>
+
+
+    </section>
+
+    <!-- Questions You May Have Section -->
+    <section class="bg-white text-gray-800 py-20">
+        <div class="container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Left Content -->
+            <div>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-8">
+                    Questions <span class="text-yellow-500">You May Have</span>
+                </h2>
+
+                <ul class="list-disc list-inside space-y-3 text-gray-700 leading-relaxed">
+                    <li>How do I start saving for retirement?</li>
+                    <li>Am I saving enough for retirement? How long will my retirement savings last?</li>
+                    <li>What is the retirement age?</li>
+                    <li>What role does Social Security play in my retirement planning?</li>
+                    <li>How much do I need in my retirement savings?</li>
+                    <li>What should I do if I haven't started saving for retirement yet?</li>
+                    <li>How do I withdraw from my retirement accounts?</li>
+                </ul>
+
+                <p class="mt-6 text-gray-600 max-w-lg">
+                    Proper planning for retirement demands that everyone knows the answer to these questions and so much
+                    more.
+                    <span class="text-yellow-500 font-semibold">WFG licensed agents</span> can show you how to create a
+                    tailored
+                    retirement strategy designed to help you live well in your golden years.
+                </p>
+            </div>
+
+            <!-- Right Image -->
+            <div class="flex justify-center">
+                <img src="./assets/retirement-strategies/client-enjoying-retirement.webp"
+                    alt="Client enjoying retirement with family"
+                    class="rounded-2xl shadow-xl w-full max-w-md lg:max-w-lg object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+
+        </div>
+    </section>
+
+    <!-- What We Offer Section -->
+    <section class="bg-gray-100 text-gray-800 py-20">
+        <div class="container mx-auto px-6 lg:px-12 space-y-16">
+
+            <!-- Section Header -->
+            <div class="text-center">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
+                    <span class="text-yellow-500">What</span> We Offer
+                </h2>
+                <p class="max-w-3xl mx-auto text-gray-700 leading-relaxed">
+                    Our licensed agents can guide you through various retirement savings options, including
+                    employer-based savings, annuities,
+                    and other strategies designed to help grow and protect your wealth over time.
+                    Find out how to save for retirement based on your place of residence!
+                </p>
+            </div>
+
+            <!-- Main Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                <!-- Left Image -->
+                <div class="flex justify-center">
+                    <img src="./assets/retirement-strategies/retirement_2.webp"
+                        alt="WFG Agents offer options tailored to your needs"
+                        class="rounded-2xl shadow-xl w-full max-w-md lg:max-w-lg object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+
+                <!-- Right Text Content -->
+                <div>
+                    <ul class="list-disc list-inside space-y-4 text-gray-700 leading-relaxed">
+                        <li>
+                            <strong>In the United States:</strong> Our product offerings include annuities,
+                            <a href="https://www.worldfinancialgroup.com/solutions/life-insurance-101" target="_blank"
+                                class="text-yellow-500 hover:underline">
+                                which you purchase from an insurance company
+                            </a>, in either a single payment or through a series of payments.
+                            Your payout can come as a lump sum or be distributed over time.
+                            Our life-licensed agents can offer fixed and fixed indexed annuities from various providers.
+                        </li>
+
+                        <li>
+                            <strong>In Canada:</strong> Our licensed agents can offer Registered Retirement Savings
+                            Plans (RRSPs) or
+                            Tax-Free Savings Accounts (TFSAs), through agreements with leading product providers, to
+                            help you save for retirement.
+                            While an RRSP is designed specifically for retirement, a TFSA can be used for any savings
+                            goal.
+                            Ask your <span class="text-yellow-500 font-semibold">WFG agent</span> which option suits you
+                            best.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Footer Text -->
+            <div class="text-center max-w-4xl mx-auto">
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    Many people underestimate how much they’ll need in retirement or delay saving until it feels more
+                    affordable.
+                    The truth is, the earlier you start, the more you benefit from compounding growth — making it easier
+                    to reach your goals.
+                    Don’t wait until retirement is around the corner.
+                    <span class="text-yellow-500 font-semibold">Start saving today!</span>
+                    Connect with one of our agents to build a strategy that gives you confidence in your financial
+                    future.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Frequently Asked Questions Section -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-6 lg:px-12">
+
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900">
+                    Frequently Asked <span class="text-yellow-500">Questions</span>
+                </h2>
+                <p class="mt-4 text-gray-700 max-w-2xl mx-auto">
+                    Have questions about retirement planning? Our licensed WFG agents are here to provide guidance and
+                    help you take control of your financial future.
+                </p>
+            </div>
+
+            <!-- FAQ Items -->
+            <div class="space-y-6">
+
+                <!-- FAQ Item 1 -->
+                <div class="border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button
+                        class="w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center focus:outline-none faq-toggle">
+                        <span class="font-semibold text-gray-800">When should I start saving for my retirement?</span>
+                        <span class="text-gray-500 transition-transform duration-300 transform faq-icon">+</span>
+                    </button>
+                    <div class="px-6 py-4 text-gray-700 hidden faq-content">
+                        The best time to start saving for retirement is as early as possible. Doing so can allow you to
+                        contribute smaller amounts each year towards your retirement goal.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button
+                        class="w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center focus:outline-none faq-toggle">
+                        <span class="font-semibold text-gray-800">Should I work with an agent to create a strategy for
+                            retirement?</span>
+                        <span class="text-gray-500 transition-transform duration-300 transform faq-icon">+</span>
+                    </button>
+                    <div class="px-6 py-4 text-gray-700 hidden faq-content">
+                        WFG’s independent agents are trained financial service professionals. Your agent can create a
+                        personalized retirement strategy tailored to your unique financial situation, provide ongoing
+                        support, and regularly review your retirement trajectory.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button
+                        class="w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center focus:outline-none faq-toggle">
+                        <span class="font-semibold text-gray-800">How much should I contribute to my retirement
+                            accounts?</span>
+                        <span class="text-gray-500 transition-transform duration-300 transform faq-icon">+</span>
+                    </button>
+                    <div class="px-6 py-4 text-gray-700 hidden faq-content">
+                        The amount depends on your planned retirement age and desired lifestyle. Include essentials like
+                        housing, healthcare, and utilities, plus entertainment and travel. A licensed WFG agent can help
+                        you create a comprehensive strategy and adjust it over time.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button
+                        class="w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center focus:outline-none faq-toggle">
+                        <span class="font-semibold text-gray-800">Can I access my retirement savings whenever I
+                            want?</span>
+                        <span class="text-gray-500 transition-transform duration-300 transform faq-icon">+</span>
+                    </button>
+                    <div class="px-6 py-4 text-gray-700 hidden faq-content">
+                        Withdrawing early may trigger tax penalties. Consider alternatives before tapping retirement
+                        accounts. Rolling over to a new employer plan or IRA may be recommended; factors like fees,
+                        investment options, and required distributions should be reviewed.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button
+                        class="w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center focus:outline-none faq-toggle">
+                        <span class="font-semibold text-gray-800">What are the main types of retirement accounts?</span>
+                        <span class="text-gray-500 transition-transform duration-300 transform faq-icon">+</span>
+                    </button>
+                    <div class="px-6 py-4 text-gray-700 hidden faq-content">
+                        Retirement accounts include employer-sponsored plans and individual accounts. Multiple accounts
+                        can make saving easier. Consult a WFG agent to determine the best combination for you and your
+                        family.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- We Are Here to Help Section -->
+    <section class="bg-gray-50 py-20">
+        <div class="container mx-auto px-6 lg:px-12 text-center">
+
+            <!-- Map Image -->
+            <div class="mb-12 flex justify-center">
+                <img src="./assets/retirement-strategies/map-lines-wfg.webp" alt="Map of WFG locations"
+                    class="w-full max-w-2xl rounded-xl object-cover">
+            </div>
+
+            <!-- Section Header -->
+            <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
+                We Are <span class="text-yellow-500">Here to Help</span>
+            </h2>
+
+            <!-- Description -->
+            <p class="text-gray-700 text-lg max-w-3xl mx-auto mb-8">
+                Need help choosing products and services to pursue your financial goals? Our financial professionals are
+                standing by with the insight and tools you need to put them within reach.
+            </p>
+
+            <!-- Call to Action -->
+            <a href="https://www.worldfinancialgroup.com/locate-an-agent"
+                class="inline-block bg-yellow-500 text-gray-900 font-semibold px-8 py-4 rounded-lg shadow hover:bg-yellow-600 transition-colors duration-300">
+                Get Started
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-[#014785] text-white py-16 px-6 md:px-16 lg:px-32">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12">
+
+            <!-- Logo & Agent Login -->
+            <div class="flex flex-col items-center space-y-4">
+                <a href="#" target="_self">
+                    <img src="./assets/transparent-logo.png" alt="Miliare Group Logo"
+                        class="w-40 md:w-48 object-contain">
+                </a>
+                <a href="#" target="_blank"
+                    class="bg-white text-[#014785] font-semibold py-2 px-6 rounded-full hover:bg-gray-200 transition">
+                    Agent Login ›
+                </a>
+            </div>
+
+            <!-- Legal & Disclaimers -->
+            <div class="flex-1 text-center md:text-left space-y-2 text-sm leading-relaxed">
+                <p>© 2025 The Miliare Group</p>
+                <p>The Miliare Group is an organization comprised of individuals associated with World Financial Group
+                    Insurance Agency, LLC and World Financial Group, Inc., but it is not an affiliated company of WFG.
+                </p>
+                <p>These agents offer insurance products through World Financial Group Insurance Agency LLC, World
+                    Financial Group Insurance Agency of Hawaii, Inc., World Financial Group Insurance Agency of
+                    Massachusetts, Inc., and/or WFG Insurance Agency of Puerto Rico, Inc. – collectively WFGIA.</p>
+                <p>WFGIA Headquarters: 6400 C Street SW, Cedar Rapids IA 52499. Phone: 770.453.9300. Miliare Group
+                    Headquarters: 2280 Wardlow Cir # 205, Corona, CA 92880</p>
+                <p>Tax and Legal Disclosure: Neither World Financial Group nor its agents may provide tax or legal
+                    advice. Consult your own independent tax/legal professional.</p>
+                <p>SUCCESS / RESULTS FOOTNOTE: Many people have experienced various levels of success with WFG.
+                    Individual results may vary and are not representative of all participants.</p>
+                <p>3508958</p>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="flex justify-center md:justify-end items-start mt-4 md:mt-0">
+                <a href="#top"
+                    class="bg-white text-[#014785] p-3 rounded-full hover:bg-gray-200 transition flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-6 h-6">
+                        <path fill="currentColor"
+                            d="M132.5 54.009L100 20 67.5 54.009l8.692 8.526 17.023-17.471V180h13.57V44.725l17.023 17.81 8.692-8.526z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FAQ Toggle Script -->
+    <script>
+        const toggles = document.querySelectorAll('.faq-toggle');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('.faq-icon');
+                content.classList.toggle('hidden');
+                icon.textContent = content.classList.contains('hidden') ? '+' : '−';
+            });
+        });
+    </script>
+</body>
+
+</html>

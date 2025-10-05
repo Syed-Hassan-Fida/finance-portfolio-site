@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wealth Builders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="./js/custom.js"></script>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] md:min-h-[75vh] bg-cover bg-center"
+        style="background-image: url('./assets/home-banner.webp');">
+        <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay for better text contrast -->
+
+        <!-- Navbar Section -->
+        <nav class="w-full z-50 shadow-lg relative">
+            <div class="bg-[#014784] p-2"></div>
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-around items-center py-4">
+                    <!-- Logo -->
+                    <a href="#">
+                        <img src="./assets/transparent-logo.png" alt="The Wealth Builders Logo"
+                            class="object-cover w-32 md:w-40">
+                    </a>
+
+                    <!-- Agent Links Button (Visible on smaller screens) -->
+                    <div class="relative">
+                        <div class="text-right py-4">
+                            <a href="#" class="text-white px-4 py-2">
+                                Agent Links
+                            </a>
+                        </div>
+
+                        <!-- Navbar Links -->
+                        <div class="hidden md:flex space-x-6 border-t-2 border-b-2 border-white items-center">
+                            <a href="./index.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Home</a>
+                            <a href="./vision-mission.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Vision &
+                                Mission</a>
+                            <a href="./products-providers.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Products &
+                                Providers</a>
+                            <a href="./platform-model.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Platform &
+                                Model</a>
+
+                            <!-- Alpine-powered dropdown -->
+                            <div x-data="{ open: false, timeout: null }"
+                                @mouseenter="clearTimeout(timeout); open = true"
+                                @mouseleave="timeout = setTimeout(() => open = false, 100)" class="relative">
+                                <button @click="open = !open" @keydown.escape.window="open = false"
+                                    :aria-expanded="open.toString()" aria-haspopup="true"
+                                    class="text-white text-lg font-semibold hover:text-gray-400 py-2 flex items-center focus:outline-none">
+                                    Client &amp; Solutions
+                                    <svg class="w-4 h-4 ml-1 transform" :class="open ? 'rotate-180' : ''" fill="none"
+                                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+
+                                <!-- menu -->
+                                <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-150"
+                                    x-transition:enter-start="opacity-0 transform scale-95"
+                                    x-transition:enter-end="opacity-100 transform scale-100"
+                                    x-transition:leave="transition ease-in duration-100"
+                                    x-transition:leave-start="opacity-100 transform scale-100"
+                                    x-transition:leave-end="opacity-0 transform scale-95" @click.away="open = false"
+                                    class="absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-lg shadow-lg z-50 ring-1 ring-black ring-opacity-5">
+                                    <a href="./products-services.html" class="block px-4 py-3 hover:bg-gray-100">Products &amp; Services</a>
+                                    <a href="./retirement-strategies.html" class="block px-4 py-3 hover:bg-gray-100">Retirement Strategies</a>
+                                    <a href="./education-planning.html" class="block px-4 py-3 hover:bg-gray-100">Education Planning</a>
+                                    <a href="./business-strategies.html" class="block px-4 py-3 hover:bg-gray-100">Business Strategies</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Estate Preservation</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Client Testimonials</a>
+                                </div>
+                            </div>
+
+                            <a href="./contact.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Contact</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 container mx-auto px-4 flex justify-center items-center h-full text-center py-16">
+            <div class="space-y-4">
+                <!-- Main Heading -->
+                <h1
+                    class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-gray-400 via-white to-gray-300">
+                    Contact Us
+                </h1>
+
+                <!-- Subheading Email Label -->
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl italic tracking-wide text-gray-600">
+                    E-mail
+                </h2>
+
+                <!-- Decorative Typographic Line -->
+                <p class="text-gray-400 text-sm sm:text-base md:text-lg tracking-widest uppercase">
+                    contact@iamawealthbuilder.org
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="bg-[#072C53] py-20 px-6 md:px-16 lg:px-32 text-white relative">
+        <div class="max-w-4xl mx-auto flex flex-col items-center text-center space-y-6">
+
+            <!-- Quote Icon -->
+            <div class="bg-white bg-opacity-20 rounded-full p-4 mb-4">
+                <img src="./assets/quote-icon.png" alt="Quote icon" class="w-16 h-16 object-contain">
+            </div>
+
+            <!-- Quote Lines -->
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-light leading-snug tracking-wide">
+                Money won't solve all your problems. But it could solve your
+            </h2>
+
+            <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight">
+                money problem.
+            </h2>
+
+            <!-- Decorative underline -->
+            <div class="w-20 h-1 bg-white rounded-full mt-4"></div>
+        </div>
+
+        <!-- Optional subtle background pattern -->
+        <div class="absolute top-0 left-0 w-32 h-32 bg-white opacity-10 rounded-full -translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-40 h-40 bg-white opacity-10 rounded-full translate-x-1/2 translate-y-1/2">
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-[#014785] text-white py-16 px-6 md:px-16 lg:px-32">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12">
+
+            <!-- Logo & Agent Login -->
+            <div class="flex flex-col items-center space-y-4">
+                <a href="#" target="_self">
+                    <img src="./assets/transparent-logo.png" alt="Miliare Group Logo"
+                        class="w-40 md:w-48 object-contain">
+                </a>
+                <a href="#" target="_blank"
+                    class="bg-white text-[#014785] font-semibold py-2 px-6 rounded-full hover:bg-gray-200 transition">
+                    Agent Login ›
+                </a>
+            </div>
+
+            <!-- Legal & Disclaimers -->
+            <div class="flex-1 text-center md:text-left space-y-2 text-sm leading-relaxed">
+                <p>© 2025 The Miliare Group</p>
+                <p>The Miliare Group is an organization comprised of individuals associated with World Financial Group
+                    Insurance Agency, LLC and World Financial Group, Inc., but it is not an affiliated company of WFG.
+                </p>
+                <p>These agents offer insurance products through World Financial Group Insurance Agency LLC, World
+                    Financial Group Insurance Agency of Hawaii, Inc., World Financial Group Insurance Agency of
+                    Massachusetts, Inc., and/or WFG Insurance Agency of Puerto Rico, Inc. – collectively WFGIA.</p>
+                <p>WFGIA Headquarters: 6400 C Street SW, Cedar Rapids IA 52499. Phone: 770.453.9300. Miliare Group
+                    Headquarters: 2280 Wardlow Cir # 205, Corona, CA 92880</p>
+                <p>Tax and Legal Disclosure: Neither World Financial Group nor its agents may provide tax or legal
+                    advice. Consult your own independent tax/legal professional.</p>
+                <p>SUCCESS / RESULTS FOOTNOTE: Many people have experienced various levels of success with WFG.
+                    Individual results may vary and are not representative of all participants.</p>
+                <p>3508958</p>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="flex justify-center md:justify-end items-start mt-4 md:mt-0">
+                <a href="#top"
+                    class="bg-white text-[#014785] p-3 rounded-full hover:bg-gray-200 transition flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-6 h-6">
+                        <path fill="currentColor"
+                            d="M132.5 54.009L100 20 67.5 54.009l8.692 8.526 17.023-17.471V180h13.57V44.725l17.023 17.81 8.692-8.526z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

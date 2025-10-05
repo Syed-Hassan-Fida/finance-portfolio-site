@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - International Wealth Builders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="./js/custom.js"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 leading-relaxed">
+
+    <!-- Navbar -->
+    <section class="relative bg-cover bg-center" style="background-image: url('./assets/home-banner.webp');">
+        <div class="absolute inset-0 bg-black opacity-60"></div> <!-- Overlay for better text contrast -->
+
+        <!-- Navbar Section -->
+        <nav class="w-full z-50 shadow-lg relative">
+            <div class="bg-[#014784] p-2"></div>
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-around items-center py-4">
+                    <!-- Logo -->
+                    <a href="#">
+                        <img src="./assets/transparent-logo.png" alt="The Wealth Builders Logo"
+                            class="object-cover w-32 md:w-40">
+                    </a>
+
+                    <!-- Agent Links Button (Visible on smaller screens) -->
+                    <div class="relative">
+                        <div class="text-right py-4">
+                            <a href="#" class="text-white px-4 py-2">
+                                Agent Links
+                            </a>
+                        </div>
+
+                        <!-- Navbar Links -->
+                        <div class="hidden md:flex space-x-6 border-t-2 border-b-2 border-white items-center">
+                            <a href="./index.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Home</a>
+                            <a href="./vision-mission.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Vision &
+                                Mission</a>
+                            <a href="./products-providers.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Products &
+                                Providers</a>
+                            <a href="./platform-model.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Platform &
+                                Model</a>
+
+                            <!-- Alpine-powered dropdown -->
+                            <div x-data="{ open: false, timeout: null }"
+                                @mouseenter="clearTimeout(timeout); open = true"
+                                @mouseleave="timeout = setTimeout(() => open = false, 100)" class="relative">
+                                <button @click="open = !open" @keydown.escape.window="open = false"
+                                    :aria-expanded="open.toString()" aria-haspopup="true"
+                                    class="text-white text-lg font-semibold hover:text-gray-400 py-2 flex items-center focus:outline-none">
+                                    Client &amp; Solutions
+                                    <svg class="w-4 h-4 ml-1 transform" :class="open ? 'rotate-180' : ''" fill="none"
+                                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+
+                                <!-- menu -->
+                                <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-150"
+                                    x-transition:enter-start="opacity-0 transform scale-95"
+                                    x-transition:enter-end="opacity-100 transform scale-100"
+                                    x-transition:leave="transition ease-in duration-100"
+                                    x-transition:leave-start="opacity-100 transform scale-100"
+                                    x-transition:leave-end="opacity-0 transform scale-95" @click.away="open = false"
+                                    class="absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-lg shadow-lg z-50 ring-1 ring-black ring-opacity-5">
+                                    <a href="./products-services.html" class="block px-4 py-3 hover:bg-gray-100">Products &amp; Services</a>
+                                    <a href="./retirement-strategies.html" class="block px-4 py-3 hover:bg-gray-100">Retirement Strategies</a>
+                                    <a href="./education-planning.html" class="block px-4 py-3 hover:bg-gray-100">Education Planning</a>
+                                    <a href="./business-strategies.html" class="block px-4 py-3 hover:bg-gray-100">Business Strategies</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Estate Preservation</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Client Testimonials</a>
+                                </div>
+                            </div>
+
+                            <a href="./contact.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Contact</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="py-16">
+        <div class="container mx-auto px-6 lg:px-20 flex flex-col lg:flex-row gap-12">
+
+            <!-- Table of Contents -->
+            <aside class="lg:w-1/4 bg-white shadow-lg rounded-2xl p-6 sticky top-6 h-fit">
+                <h2 class="text-xl font-semibold mb-4 text-[#014784]">Contents</h2>
+                <ul class="space-y-3 text-gray-700 text-sm">
+                    <li><a href="#acceptance" class="hover:text-[#014784]">1. Acceptance of Terms</a></li>
+                    <li><a href="#authorized-use" class="hover:text-[#014784]">2. Authorized Use & License</a></li>
+                    <li><a href="#data-ownership" class="hover:text-[#014784]">3. Data Ownership</a></li>
+                    <li><a href="#confidentiality" class="hover:text-[#014784]">4. Confidentiality & NDA</a></li>
+                    <li><a href="#compliance" class="hover:text-[#014784]">5. Compliance With Laws</a></li>
+                    <li><a href="#intellectual" class="hover:text-[#014784]">6. Intellectual Property</a></li>
+                    <li><a href="#disclaimer" class="hover:text-[#014784]">7. Disclaimers</a></li>
+                    <li><a href="#liability" class="hover:text-[#014784]">8. Limitations of Liability</a></li>
+                    <li><a href="#termination" class="hover:text-[#014784]">9. Termination</a></li>
+                    <li><a href="#modifications" class="hover:text-[#014784]">10. Modifications</a></li>
+                    <li><a href="#law" class="hover:text-[#014784]">11. Governing Law</a></li>
+                    <li><a href="#contact" class="hover:text-[#014784]">12. Contact Information</a></li>
+                </ul>
+            </aside>
+
+            <!-- Terms Content -->
+            <div class="flex-1 space-y-12">
+
+                <!-- Company Info -->
+                <div>
+                    <h2 class="text-2xl font-bold text-[#014784] mb-2">KR Management LLC dba International Wealth
+                        Builders</h2>
+                    <p class="italic text-gray-600">("Company," "we," "our," or "us")</p>
+                </div>
+
+                <!-- Sections -->
+                <div id="acceptance">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">1. Acceptance of Terms</h3>
+                    <p>
+                        By creating an account, accessing, or using the International Wealth Builders platform
+                        (“Service”), you
+                        agree to be bound by these Terms of Service, including the confidentiality and non-disclosure
+                        provisions
+                        set forth herein, and our Privacy Policy. If you do not agree, you must not access or use the
+                        Service.
+                    </p>
+                </div>
+
+                <div id="authorized-use">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">2. Authorized Use & License</h3>
+                    <p>We grant you a limited, non-exclusive, non-transferable, revocable license to access and use the
+                        Service for legitimate business purposes as an agent or authorized user.</p>
+                    <p class="mt-3 font-medium">You may not:</p>
+                    <ul class="list-disc ml-6 space-y-1 mt-2">
+                        <li>Copy, download, screenshot, or otherwise reproduce training materials, agent data, or
+                            proprietary information.</li>
+                        <li>Share, resell, sublicense, or otherwise provide third-party access to the Service or its
+                            content.</li>
+                        <li>Use automated tools, bots, or scripts to extract, scrape, or collect information.</li>
+                        <li>Modify, reverse engineer, or attempt to gain unauthorized access to the Service.</li>
+                        <li>Use the Service for any unlawful purpose or in violation of applicable laws.</li>
+                    </ul>
+                    <p class="mt-3">Violation of these restrictions will result in immediate termination of your access
+                        and may subject you to legal liability.</p>
+                </div>
+
+                <div id="data-ownership">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">3. Data Ownership</h3>
+
+                    <h4 class="font-semibold text-gray-700 mt-4">3.1 Client Data</h4>
+                    <ul class="list-disc ml-6 space-y-1 mt-2">
+                        <li>All client information entered into the platform remains the property of the respective
+                            agent.</li>
+                        <li>By submitting such information, you grant the Company a limited license to host, store, and
+                            process this information solely to provide the Service.</li>
+                        <li>Agents may not export, download, or copy client data outside the Service without express
+                            written permission, except as required for legitimate business purposes and in compliance
+                            with applicable laws.</li>
+                        <li>The Company will not sell, share, or misuse an agent’s client data.</li>
+                    </ul>
+
+                    <h4 class="font-semibold text-gray-700 mt-4">3.2 Agent & Agency Data</h4>
+                    <ul class="list-disc ml-6 space-y-1 mt-2">
+                        <li>All agent information, training materials, communications, organizational data, performance
+                            reports, hierarchy structures, and any content provided by the Company remain the exclusive
+                            property of the Company.</li>
+                        <li>You may not copy, download, distribute, or otherwise use such information outside the
+                            Service without the Company’s express written authorization.</li>
+                    </ul>
+                </div>
+
+                <div id="confidentiality">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">4. Confidentiality & Non-Disclosure (NDA)</h3>
+                    <p>You acknowledge that the Service contains confidential and proprietary information belonging
+                        either to the Company or to other agents. Accordingly, you agree:</p>
+                    <ol class="list-decimal ml-6 space-y-1 mt-2">
+                        <li>Confidentiality Obligation: You will keep all non-public information strictly confidential
+                            and will not disclose, copy, download, or share such information without prior written
+                            consent.</li>
+                        <li>Scope of Confidential Information: Includes but not limited to training content, software,
+                            CRM data, client lists, policies, reports, agent rosters, and strategies.</li>
+                        <li>Use Restriction: You will use Confidential Information solely for legitimate business
+                            purposes within the Company’s platform.</li>
+                        <li>Return/Destruction: Upon termination of your account, or upon request, you must immediately
+                            cease use and delete or return all Confidential Information.</li>
+                        <li>Remedies: The Company may seek injunctive relief in addition to damages for unauthorized
+                            disclosure or misuse.</li>
+                    </ol>
+                    <p class="mt-3 italic text-gray-700">This NDA obligation survives termination of your account and
+                        continues indefinitely with respect to Confidential Information.</p>
+                </div>
+
+                <div id="compliance">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">5. Compliance With Laws</h3>
+                    <p>You are solely responsible for ensuring that your use of the Service, including your handling of
+                        client data, complies with all applicable state and federal laws and regulations (including but
+                        not limited to consumer privacy, data protection, insurance, and financial regulations).</p>
+                    <p class="mt-2">The Company provides the Service “as is” and does not assume responsibility for your
+                        compliance obligations.</p>
+                </div>
+
+                <div id="intellectual">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">6. Intellectual Property</h3>
+                    <p>All training content, materials, logos, software, and documentation are owned by the Company and
+                        protected under U.S. copyright, trademark, and trade secret laws. You may not reproduce,
+                        distribute, or create derivative works without express written permission.</p>
+                </div>
+
+                <div id="disclaimer">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">7. Disclaimers</h3>
+                    <p>The Service and all materials are provided on an “AS IS” and “AS AVAILABLE” basis. The Company
+                        disclaims all warranties, express or implied, including but not limited to merchantability,
+                        fitness for a particular purpose, or non-infringement. We do not guarantee uninterrupted access,
+                        error-free performance, or accuracy of materials.</p>
+                </div>
+
+                <div id="liability">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">8. Limitations of Liability</h3>
+                    <p>To the fullest extent permitted by law, the Company and its affiliates shall not be liable for:
+                    </p>
+                    <ul class="list-disc ml-6 space-y-1 mt-2">
+                        <li>Loss of profits, business opportunities, or data;</li>
+                        <li>Unauthorized access to or alteration of your transmissions or data;</li>
+                        <li>Any indirect, incidental, special, consequential, or punitive damages.</li>
+                    </ul>
+                    <p class="mt-3">Total liability for any claim shall not exceed the amount paid by you to use the
+                        Service in the twelve (12) months preceding the event giving rise to the claim.</p>
+                </div>
+
+                <div id="termination">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">9. Termination</h3>
+                    <p>We reserve the right to suspend or terminate your account at our discretion, without notice, if
+                        you violate these Terms or engage in misuse of the Service. Upon termination, you must
+                        immediately cease all use and delete any materials accessed in violation of these Terms.</p>
+                </div>
+
+                <div id="modifications">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">10. Modifications</h3>
+                    <p>The Company may revise these Terms at any time. Continued use of the Service after changes
+                        constitutes acceptance of the revised Terms.</p>
+                </div>
+
+                <div id="law">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">11. Governing Law</h3>
+                    <p>These Terms are governed by the laws of the State of Idaho, without regard to conflict of law
+                        principles. You agree to comply with all applicable federal and state laws in the jurisdiction
+                        in which you operate and submit to the exclusive jurisdiction of the state and federal courts
+                        located in Idaho.</p>
+                </div>
+
+                <div id="contact">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">12. Contact Information</h3>
+                    <address class="not-italic leading-relaxed">
+                        <strong>KR Management LLC dba International Wealth Builders</strong><br />
+                        208 12th Avenue Road<br />
+                        Nampa, ID 83686<br />
+                        <a href="mailto:Contact@iamawealthbuilder.org"
+                            class="text-[#014784] underline hover:text-[#0369a1]">Contact@iamawealthbuilder.org</a>
+                    </address>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#014785] text-white py-16 px-6 md:px-16 lg:px-32 mt-12">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12">
+            <div class="flex flex-col items-center space-y-4">
+                <a href="#">
+                    <img src="./assets/transparent-logo.png" alt="IWB Logo" class="w-40 md:w-48 object-contain">
+                </a>
+                <a href="#"
+                    class="bg-white text-[#014785] font-semibold py-2 px-6 rounded-full hover:bg-gray-200 transition">
+                    Agent Login ›
+                </a>
+            </div>
+            <div class="flex-1 text-center md:text-left space-y-2 text-sm leading-relaxed">
+                <p>© 2025 International Wealth Builders</p>
+                <p>All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

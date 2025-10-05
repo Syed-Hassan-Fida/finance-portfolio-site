@@ -26,19 +26,19 @@ function reviewSlider() {
             },
             {
                 name: 'Chelsey Zafft',
-                review: 'The Miliere Group didn’t just help me secure my future— they actually took the time to explain all the steps, answer questions, and ensured I understood everything before making any decisions.',
+                review: 'The Wealth Builders didn’t just help me secure my future— they actually took the time to explain all the steps, answer questions, and ensured I understood everything before making any decisions.',
                 image: './assets/avatar.png',
                 rating: 5
             },
             {
                 name: 'Ricoyo Lyles',
-                review: 'Outstanding experience with The Miliere Group — professional, honest, and client-focused. They provided great tools and support that helped me secure my financial future.',
+                review: 'Outstanding experience with The Wealth Builders — professional, honest, and client-focused. They provided great tools and support that helped me secure my financial future.',
                 image: './assets/avatar.png',
                 rating: 5
             },
             {
                 name: 'Lynn',
-                review: 'My experience with the Miliere Group has been incredible. They offered great advice and insights, giving me the tools I needed to take control of my financial future.',
+                review: 'My experience with the Wealth Builders has been incredible. They offered great advice and insights, giving me the tools I needed to take control of my financial future.',
                 image: './assets/avatar.png',
                 rating: 5
             },
@@ -109,3 +109,36 @@ function reviewSlider() {
         }
     }
 }
+
+const counters = document.querySelectorAll('.counter');
+const animateCounters = (counter) => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+    const increment = target / 200;
+    const updateCount = () => {
+        count += increment;
+        counter.innerText = count < target ? Math.ceil(count).toLocaleString() : target.toLocaleString();
+        if (count < target) requestAnimationFrame(updateCount);
+    }
+    updateCount();
+}
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCounters(entry.target);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.6 });
+counters.forEach(counter => observer.observe(counter));
+
+
+const toggles = document.querySelectorAll(".faq-toggle");
+toggles.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector("svg");
+        content.classList.toggle("hidden");
+        icon.classList.toggle("rotate-180");
+    });
+});

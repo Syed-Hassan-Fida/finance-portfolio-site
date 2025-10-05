@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - International Wealth Builders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="./js/custom.js"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 leading-relaxed">
+
+    <!-- Navbar -->
+    <section class="relative bg-cover bg-center" style="background-image: url('./assets/home-banner.webp');">
+        <div class="absolute inset-0 bg-black opacity-60"></div> <!-- Overlay for better text contrast -->
+
+        <!-- Navbar Section -->
+        <nav class="w-full z-50 shadow-lg relative">
+            <div class="bg-[#014784] p-2"></div>
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-around items-center py-4">
+                    <!-- Logo -->
+                    <a href="#">
+                        <img src="./assets/transparent-logo.png" alt="The Wealth Builders Logo"
+                            class="object-cover w-32 md:w-40">
+                    </a>
+
+                    <!-- Agent Links Button (Visible on smaller screens) -->
+                    <div class="relative">
+                        <div class="text-right py-4">
+                            <a href="#" class="text-white px-4 py-2">
+                                Agent Links
+                            </a>
+                        </div>
+
+                        <!-- Navbar Links -->
+                        <div class="hidden md:flex space-x-6 border-t-2 border-b-2 border-white items-center">
+                            <a href="./index.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Home</a>
+                            <a href="./vision-mission.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Vision &
+                                Mission</a>
+                            <a href="./products-providers.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Products &
+                                Providers</a>
+                            <a href="./platform-model.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Platform &
+                                Model</a>
+
+                            <!-- Alpine-powered dropdown -->
+                            <div x-data="{ open: false, timeout: null }"
+                                @mouseenter="clearTimeout(timeout); open = true"
+                                @mouseleave="timeout = setTimeout(() => open = false, 100)" class="relative">
+                                <button @click="open = !open" @keydown.escape.window="open = false"
+                                    :aria-expanded="open.toString()" aria-haspopup="true"
+                                    class="text-white text-lg font-semibold hover:text-gray-400 py-2 flex items-center focus:outline-none">
+                                    Client &amp; Solutions
+                                    <svg class="w-4 h-4 ml-1 transform" :class="open ? 'rotate-180' : ''" fill="none"
+                                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+
+                                <!-- menu -->
+                                <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-150"
+                                    x-transition:enter-start="opacity-0 transform scale-95"
+                                    x-transition:enter-end="opacity-100 transform scale-100"
+                                    x-transition:leave="transition ease-in duration-100"
+                                    x-transition:leave-start="opacity-100 transform scale-100"
+                                    x-transition:leave-end="opacity-0 transform scale-95" @click.away="open = false"
+                                    class="absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-lg shadow-lg z-50 ring-1 ring-black ring-opacity-5">
+                                    <a href="./products-services.html" class="block px-4 py-3 hover:bg-gray-100">Products &amp; Services</a>
+                                    <a href="./retirement-strategies.html" class="block px-4 py-3 hover:bg-gray-100">Retirement Strategies</a>
+                                    <a href="./education-planning.html" class="block px-4 py-3 hover:bg-gray-100">Education Planning</a>
+                                    <a href="./business-strategies.html" class="block px-4 py-3 hover:bg-gray-100">Business Strategies</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Estate Preservation</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Client Testimonials</a>
+                                </div>
+                            </div>
+
+                            <a href="./contact.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Contact</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-16">
+        <div class="container mx-auto px-6 lg:px-20 flex flex-col lg:flex-row gap-12">
+
+            <!-- Table of Contents -->
+            <aside class="lg:w-1/4 bg-white shadow-lg rounded-2xl p-6 sticky top-6 h-fit">
+                <h2 class="text-xl font-semibold mb-4 text-[#014784]">Contents</h2>
+                <ul class="space-y-3 text-gray-700 text-sm">
+                    <li><a href="#introduction" class="hover:text-[#014784]">1. Introduction</a></li>
+                    <li><a href="#information" class="hover:text-[#014784]">2. Information We Collect</a></li>
+                    <li><a href="#use" class="hover:text-[#014784]">3. How We Use Information</a></li>
+                    <li><a href="#ownership" class="hover:text-[#014784]">4. Data Ownership & Responsibilities</a></li>
+                    <li><a href="#sharing" class="hover:text-[#014784]">5. Sharing of Information</a></li>
+                    <li><a href="#security" class="hover:text-[#014784]">6. Data Security</a></li>
+                    <li><a href="#retention" class="hover:text-[#014784]">7. Data Retention</a></li>
+                    <li><a href="#rights" class="hover:text-[#014784]">8. User Rights (State-Specific)</a></li>
+                    <li><a href="#children" class="hover:text-[#014784]">9. Children’s Privacy</a></li>
+                    <li><a href="#international" class="hover:text-[#014784]">10. International Users</a></li>
+                    <li><a href="#changes" class="hover:text-[#014784]">11. Changes to This Policy</a></li>
+                    <li><a href="#contact" class="hover:text-[#014784]">12. Contact Information</a></li>
+                </ul>
+            </aside>
+
+            <!-- Privacy Policy Content -->
+            <div class="flex-1 space-y-12">
+
+                <!-- Company Info -->
+                <div>
+                    <h2 class="text-2xl font-bold text-[#014784] mb-2">KR Management LLC dba International Wealth
+                        Builders</h2>
+                    <p class="italic text-gray-600">("Company," "we," "our," or "us")</p>
+                </div>
+
+                <!-- 1. Introduction -->
+                <div id="introduction">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">1. Introduction</h3>
+                    <p>We respect your privacy and are committed to protecting the personal information of both our
+                        agents and their clients. This Privacy Policy explains how we collect, use, store, and protect
+                        information through the International Wealth Builders platform (“Service”). By using the
+                        Service, you agree to the practices described in this Policy.</p>
+                </div>
+
+                <!-- 2. Information We Collect -->
+                <div id="information">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">2. Information We Collect</h3>
+
+                    <h4 class="font-semibold text-gray-700 mt-4">2.1 Agent Information</h4>
+                    <p>When you register or use the Service, we may collect:</p>
+                    <ul class="list-disc ml-6 space-y-1 mt-2">
+                        <li>Name, email, phone number, and contact details</li>
+                        <li>Agency/organization affiliation</li>
+                        <li>Login credentials and account activity logs</li>
+                        <li>Training progress, performance data, and communications</li>
+                    </ul>
+
+                    <h4 class="font-semibold text-gray-700 mt-4">2.2 Client Information (entered by agents)</h4>
+                    <ul class="list-disc ml-6 space-y-1 mt-2">
+                        <li>Name, phone number, email, and address</li>
+                        <li>Policy numbers and related notes</li>
+                        <li>Appointment schedules and communication records</li>
+                    </ul>
+
+                    <h4 class="font-semibold text-gray-700 mt-4">2.3 Automatically Collected Information</h4>
+                    <ul class="list-disc ml-6 space-y-1 mt-2">
+                        <li>Device and browser type</li>
+                        <li>IP address and location</li>
+                        <li>Usage statistics and interaction logs</li>
+                    </ul>
+                </div>
+
+                <!-- 3. How We Use Information -->
+                <div id="use">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">3. How We Use Information</h3>
+                    <ul class="list-disc ml-6 space-y-1 mt-2">
+                        <li>Provide and operate the Service</li>
+                        <li>Maintain secure access controls</li>
+                        <li>Deliver training, organizational tools, and communication features</li>
+                        <li>Support compliance with insurance and financial industry regulations</li>
+                        <li>Improve functionality and troubleshoot issues</li>
+                        <li>Communicate with users regarding updates, support, or compliance notices</li>
+                    </ul>
+                </div>
+
+                <!-- 4. Data Ownership -->
+                <div id="ownership">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">4. Data Ownership & Responsibilities</h3>
+                    <ul class="list-disc ml-6 space-y-1 mt-2">
+                        <li><strong>Client Data:</strong> Agents retain ownership of their client data. We act as a data
+                            processor and only store/process client information as part of providing the Service.</li>
+                        <li><strong>Agent/Agency Data:</strong> Training materials, performance data, and organizational
+                            structures are Company property.</li>
+                    </ul>
+                    <p class="mt-2">Agents are responsible for ensuring their handling of client data complies with
+                        applicable state and federal laws, including privacy and insurance regulations.</p>
+                </div>
+
+                <!-- 5. Sharing -->
+                <div id="sharing">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">5. Sharing of Information</h3>
+                    <p>We do not sell client or agent data. We may share information only in the following limited
+                        circumstances:</p>
+                    <ol class="list-decimal ml-6 space-y-1 mt-2">
+                        <li>With service providers who support our platform (e.g., hosting, security, cloud storage),
+                            bound by confidentiality obligations.</li>
+                        <li>As required by law, regulation, subpoena, or government request.</li>
+                        <li>To protect our legal rights, property, or the safety of users.</li>
+                    </ol>
+                </div>
+
+                <!-- 6. Data Security -->
+                <div id="security">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">6. Data Security</h3>
+                    <p>We implement reasonable administrative, technical, and physical safeguards to protect data,
+                        including encryption and access controls. However, no system is 100% secure. Users are
+                        responsible for maintaining secure passwords and device access.</p>
+                </div>
+
+                <!-- 7. Data Retention -->
+                <div id="retention">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">7. Data Retention</h3>
+                    <ul class="list-disc ml-6 space-y-1 mt-2">
+                        <li>Agent accounts and data are retained while the account is active.</li>
+                        <li>Upon termination, data may be retained for legal, regulatory, or backup purposes, after
+                            which it will be securely deleted.</li>
+                    </ul>
+                </div>
+
+                <!-- 8. User Rights -->
+                <div id="rights">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">8. User Rights (State-Specific)</h3>
+                    <p>Depending on your state of residence, you may have certain rights, including:</p>
+                    <ul class="list-disc ml-6 space-y-1 mt-2">
+                        <li><strong>Access:</strong> Request a copy of personal data collected.</li>
+                        <li><strong>Correction:</strong> Request corrections to inaccurate information.</li>
+                        <li><strong>Deletion:</strong> Request deletion of personal data, subject to legal/regulatory
+                            retention requirements.</li>
+                        <li><strong>Opt-Out:</strong> Request that data not be shared with third parties for marketing
+                            (note: we do not sell data).</li>
+                    </ul>
+                    <p class="mt-2">Requests can be submitted via <strong>contact@iamawealthbuilder.org</strong>. We may
+                        need to verify your identity before fulfilling requests.</p>
+                </div>
+
+                <!-- 9. Children’s Privacy -->
+                <div id="children">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">9. Children’s Privacy</h3>
+                    <p>The Service is not intended for individuals under 18. We do not knowingly collect personal
+                        information from minors.</p>
+                </div>
+
+                <!-- 10. International Users -->
+                <div id="international">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">10. International Users</h3>
+                    <p>This Service is operated in the United States. If you access from outside the U.S., you consent
+                        to the transfer and storage of your information in the U.S.</p>
+                </div>
+
+                <!-- 11. Changes -->
+                <div id="changes">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">11. Changes to This Policy</h3>
+                    <p>We may update this Privacy Policy from time to time. We will notify users of significant changes
+                        by posting a notice within the Service or by email. Continued use of the Service after changes
+                        constitutes acceptance of the revised Policy.</p>
+                </div>
+
+                <!-- 12. Contact -->
+                <div id="contact">
+                    <h3 class="text-xl font-semibold text-[#014784] mb-2">12. Contact Information</h3>
+                    <address class="not-italic leading-relaxed">
+                        <strong>KR Management LLC dba International Wealth Builders</strong><br />
+                        208 12th Avenue Road<br />
+                        Nampa, ID 83686<br />
+                        <a href="mailto:contact@iamawealthbuilder.org"
+                            class="text-[#014784] underline hover:text-[#0369a1]">contact@iamawealthbuilder.org</a>
+                    </address>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#014785] text-white py-16 px-6 md:px-16 lg:px-32 mt-12">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12">
+            <div class="flex flex-col items-center space-y-4">
+                <a href="#">
+                    <img src="./assets/transparent-logo.png" alt="IWB Logo" class="w-40 md:w-48 object-contain">
+                </a>
+                <a href="#"
+                    class="bg-white text-[#014785] font-semibold py-2 px-6 rounded-full hover:bg-gray-200 transition">
+                    Agent Login ›
+                </a>
+            </div>
+            <div class="flex-1 text-center md:text-left space-y-2 text-sm leading-relaxed">
+                <p>© 2025 International Wealth Builders</p>
+                <p>All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Miliere Group</title>
+    <title>The Wealth Builders</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <script src="./js/custom.js"></script>
@@ -13,17 +13,18 @@
 <body>
 
     <!-- Hero Section -->
-    <section class="relative h-screen bg-cover bg-center" style="background-image: url('./assets/banner.avif');">
+    <section class="relative min-h-[80vh] md:min-h-[75vh] bg-cover bg-center"
+        style="background-image: url('./assets/home-banner.webp');">
         <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay for better text contrast -->
 
         <!-- Navbar Section -->
         <nav class="w-full z-50 shadow-lg relative">
             <div class="bg-[#014784] p-2"></div>
             <div class="max-w-7xl mx-auto px-4">
-                <div class="flex justify-between items-center py-4">
+                <div class="flex justify-around items-center py-4">
                     <!-- Logo -->
-                    <a href="/">
-                        <img src="./assets/nav-logo.avif" alt="The Miliere Group Logo" class="object-cover w-40">
+                    <a href="#">
+                        <img src="./assets/transparent-logo.png" alt="The Wealth Builders Logo" class="object-cover w-32 md:w-40">
                     </a>
 
                     <!-- Agent Links Button (Visible on smaller screens) -->
@@ -35,15 +36,47 @@
                         </div>
 
                         <!-- Navbar Links -->
-                        <div class="hidden md:flex space-x-6 border-t-2 border-b-2 border-white">
-                            <a href="#" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Home</a>
-                            <a href="#" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Vision &
+                        <div class="hidden md:flex space-x-6 border-t-2 border-b-2 border-white items-center">
+                            <a href="./index.html" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Home</a>
+                            <a href="./vision-mission.html" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Vision &
                                 Mission</a>
-                            <a href="#" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Products &
+                            <a href="./products-providers.html" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Products &
                                 Providers</a>
-                            <a href="#" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Platform &
+                            <a href="./platform-model.html" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Platform &
                                 Model</a>
-                            <a href="#" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Contact</a>
+
+                            <!-- Alpine-powered dropdown -->
+                            <div x-data="{ open: false, timeout: null }"
+                                @mouseenter="clearTimeout(timeout); open = true"
+                                @mouseleave="timeout = setTimeout(() => open = false, 100)" class="relative">
+                                <button @click="open = !open" @keydown.escape.window="open = false"
+                                    :aria-expanded="open.toString()" aria-haspopup="true"
+                                    class="text-white text-lg font-semibold hover:text-gray-400 py-2 flex items-center focus:outline-none">
+                                    Client &amp; Solutions
+                                    <svg class="w-4 h-4 ml-1 transform" :class="open ? 'rotate-180' : ''" fill="none"
+                                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+
+                                <!-- menu -->
+                                <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-150"
+                                    x-transition:enter-start="opacity-0 transform scale-95"
+                                    x-transition:enter-end="opacity-100 transform scale-100"
+                                    x-transition:leave="transition ease-in duration-100"
+                                    x-transition:leave-start="opacity-100 transform scale-100"
+                                    x-transition:leave-end="opacity-0 transform scale-95" @click.away="open = false"
+                                    class="absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-lg shadow-lg z-50 ring-1 ring-black ring-opacity-5">
+                                    <a href="./products-services.html" class="block px-4 py-3 hover:bg-gray-100">Products &amp; Services</a>
+                                    <a href="./retirement-strategies.html" class="block px-4 py-3 hover:bg-gray-100">Retirement Strategies</a>
+                                    <a href="./education-planning.html" class="block px-4 py-3 hover:bg-gray-100">Education Planning</a>
+                                    <a href="./business-strategies.html" class="block px-4 py-3 hover:bg-gray-100">Business Strategies</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Estate Preservation</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Client Testimonials</a>
+                                </div>
+                            </div>
+
+                            <a href="./contact.html" class="text-white text-lg font-semibold hover:text-gray-400 py-2">Contact</a>
                         </div>
                     </div>
 
@@ -53,11 +86,11 @@
 
         <!-- Hero Content -->
         <div
-            class="relative z-10 container mx-auto px-4 flex justify-center items-center h-full text-center text-white">
+            class="relative z-10 container mx-auto px-4 flex justify-center items-center h-full text-center text-white py-10">
             <div>
                 <h1
                     class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-snug sm:leading-tight md:leading-tight mb-4 tracking-wide">
-                    The Miliere Group
+                    The Wealth Builders
                 </h1>
                 <h2 class="text-xl sm:text-2xl md:text-5xl lg:text-6xl italic mb-4 sm:mb-5 md:mb-6 tracking-wide">
                     Empowering Everyday Families
@@ -69,7 +102,6 @@
         </div>
 
     </section>
-
 
     <!-- discover content -->
     <section class="py-16 bg-white">
@@ -118,7 +150,7 @@
     <section class="py-16 bg-white">
         <div class="mx-auto w-full px-4" x-data="reviewSlider()" x-init="autoSlide()">
 
-            <h2 class="text-3xl font-bold text-center mb-8">Miliere Group Reviews</h2>
+            <h2 class="text-3xl font-bold text-center mb-8">Wealth Builders Reviews</h2>
 
             <div class="relative" @touchstart="startTouch($event)" @touchend="endTouch($event)">
 
@@ -192,7 +224,6 @@
         </div>
     </section>
 
-
     <section class="py-16 bg-[#072C53] text-white">
         <div class="mx-auto w-full px-4 sm:px-6 lg:px-12">
 
@@ -260,7 +291,7 @@
 
             <!-- Description -->
             <p class="text-base sm:text-lg md:text-xl leading-relaxed max-w-4xl mx-auto text-black-200">
-                As a Miliere Group financial professional, we focus on you and your needs, goals, and objectives.
+                As a Wealth Builders financial professional, we focus on you and your needs, goals, and objectives.
                 We strive to help individuals, families, and businesses create a sound strategy for the future focused
                 on reducing debt, saving money, protecting the things that are most valuable to you, and helping
                 entrepreneurs reach their dreams.
@@ -276,7 +307,6 @@
 
         </div>
     </section>
-
 
     <section class="bg-gray-50 py-16">
         <div class="container mx-auto px-4">
@@ -399,7 +429,6 @@
         </div>
     </section>
 
-
     <!-- Creative How We Help Section -->
     <section class="relative bg-gradient-to-b from-blue-50 to-white py-24 px-6 md:px-16 lg:px-32">
         <div class="max-w-6xl mx-auto text-center mb-16">
@@ -501,12 +530,12 @@
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12">
 
             <!-- Logo & Agent Login -->
-            <div class="flex flex-col items-center md:items-start space-y-4">
-                <a href="https://www.mymiliaregroup.com" target="_self">
-                    <img src="https://static.wixstatic.com/media/46dd91_4ba420c2ecaa4cf4a154cd9c3132fbdd~mv2.png"
-                        alt="Miliare Group Logo" class="w-36 md:w-40 object-contain">
+            <div class="flex flex-col items-center space-y-4">
+                <a href="#" target="_self">
+                    <img src="./assets/transparent-logo.png" alt="Miliare Group Logo"
+                        class="w-40 md:w-48 object-contain">
                 </a>
-                <a href="https://www.mywfg.com/" target="_blank"
+                <a href="#" target="_blank"
                     class="bg-white text-[#014785] font-semibold py-2 px-6 rounded-full hover:bg-gray-200 transition">
                     Agent Login ›
                 </a>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wealth Builders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] md:min-h-[75vh] bg-cover bg-center flex items-center justify-center"
+        style="background-image: url('./assets/home-banner.webp');">
+        <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay for better text contrast -->
+
+        <!-- Navbar Section -->
+        <nav class="absolute top-0 left-0 w-full z-50 shadow-lg">
+            <div class="bg-[#014784] p-2"></div>
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-around items-center py-4">
+                    <!-- Logo -->
+                    <a href="#">
+                        <img src="./assets/transparent-logo.png" alt="The Wealth Builders Logo"
+                            class="object-cover w-32 md:w-40">
+                    </a>
+
+                    <!-- Agent Links Button (Visible on smaller screens) -->
+                    <div class="relative">
+                        <div class="text-right py-4">
+                            <a href="#" class="text-white px-4 py-2">
+                                Agent Links
+                            </a>
+                        </div>
+
+                        <!-- Navbar Links -->
+                        <div class="hidden md:flex space-x-6 border-t-2 border-b-2 border-white items-center">
+                            <a href="./index.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Home</a>
+                            <a href="./vision-mission.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Vision &
+                                Mission</a>
+                            <a href="./products-providers.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Products &
+                                Providers</a>
+                            <a href="./platform-model.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Platform &
+                                Model</a>
+
+                            <!-- Dropdown -->
+                            <div x-data="{ open: false, timeout: null }"
+                                @mouseenter="clearTimeout(timeout); open = true"
+                                @mouseleave="timeout = setTimeout(() => open = false, 100)" class="relative">
+                                <button @click="open = !open" @keydown.escape.window="open = false"
+                                    :aria-expanded="open.toString()" aria-haspopup="true"
+                                    class="text-white text-lg font-semibold hover:text-gray-400 py-2 flex items-center focus:outline-none">
+                                    Client &amp; Solutions
+                                    <svg class="w-4 h-4 ml-1 transform" :class="open ? 'rotate-180' : ''" fill="none"
+                                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+
+                                <!-- Dropdown Menu -->
+                                <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-150"
+                                    x-transition:enter-start="opacity-0 transform scale-95"
+                                    x-transition:enter-end="opacity-100 transform scale-100"
+                                    x-transition:leave="transition ease-in duration-100"
+                                    x-transition:leave-start="opacity-100 transform scale-100"
+                                    x-transition:leave-end="opacity-0 transform scale-95" @click.away="open = false"
+                                    class="absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-lg shadow-lg z-50 ring-1 ring-black ring-opacity-5">
+                                    <a href="./products-services.html"
+                                        class="block px-4 py-3 hover:bg-gray-100">Products &amp; Services</a>
+                                    <a href="./retirement-strategies.html" class="block px-4 py-3 hover:bg-gray-100">Retirement Strategies</a>
+                                    <a href="./education-planning.html" class="block px-4 py-3 hover:bg-gray-100">Education Planning</a>
+                                    <a href="./business-strategies.html" class="block px-4 py-3 hover:bg-gray-100">Business Strategies</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Estate Preservation</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Client Testimonials</a>
+                                </div>
+                            </div>
+
+                            <a href="./contact.html"
+                                class="text-white text-lg font-semibold hover:text-gray-400 py-2">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center text-white px-4">
+            <h1
+                class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-snug sm:leading-tight md:leading-tight mb-4 tracking-wide">
+                WFG's Financial
+            </h1>
+            <h2 class="text-xl sm:text-2xl md:text-5xl lg:text-6xl italic mb-4 sm:mb-5 md:mb-6 tracking-wide">
+                Product Solutions
+            </h2>
+        </div>
+    </section>
+
+    <section class="relative text-black py-20 text-center">
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <div class="relative container mx-auto px-6">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold leading-snug max-w-5xl mx-auto">
+                While no one strategy is guaranteed to solve all of your financial worries, our financial professionals
+                utilize an array of products and services to help you work toward your goals.
+            </h2>
+            <p class="mt-6 text-lg opacity-90 max-w-2xl mx-auto">
+                Explore various insurance services and saving strategies online and connect with a WFG agent today.
+            </p>
+            <div class="mt-8">
+                <a href="#"
+                    class="inline-block bg-white text-[#014784] font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition">
+                    Connect with an Agent
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Strategies Services -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+            <!-- Text -->
+            <div class="md:w-1/2 order-2 md:order-1">
+                <h2 class="text-3xl font-bold text-[#014784] mb-4">Financial Strategies Services</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Life changes, and so should your financial strategy. At World Financial Group, our team can help you
+                    craft a personalized approach tailored to your unique needs and goals. A licensed WFG agent will be
+                    at your side for the entire journey to guide you toward achieving the financial future you envision.
+                    We’ll utilize:
+                </p>
+                <ul class="list-disc ml-5 text-gray-700 space-y-1">
+                    <li>Financial Needs Analysis</li>
+                    <li>Financial Goal Setting</li>
+                    <li>Strategies to Pursue Your Goals</li>
+                </ul>
+            </div>
+            <!-- Image -->
+            <div class="md:w-1/2 order-1 md:order-2">
+                <img src="./assets/products-services/financial-education-couple.webp"
+                    alt="Couple learning financial education" class="rounded-2xl shadow-lg w-full object-cover" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Insurance Solutions -->
+    <section class="py-16 bg-[#014784] text-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+            <!-- Image -->
+            <div class="md:w-1/2">
+                <img src="./assets/products-services/carefree-family-with-life-insurance.webp"
+                    alt="Family enjoying life insurance protection" class="rounded-2xl shadow-lg w-full object-cover" />
+            </div>
+            <!-- Text -->
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold mb-4">Insurance Solutions</h2>
+                <p class="mb-4">
+                    Life's scenarios can vary from person to person, and from family to family. WFG’s suite of insurance
+                    services can offer support to you and your family when faced with life’s most difficult challenges.
+                    WFG insurance products include:
+                </p>
+                <ul class="list-disc ml-5 space-y-1">
+                    <li>Life Insurance</li>
+                    <li>Disability Insurance</li>
+                    <li>Long Term Care Insurance (U.S. Only)</li>
+                    <li>Segregated Funds (Canada Only)</li>
+                    <li>Guaranteed Interest Accounts (Canada Only)</li>
+                </ul>
+                <a href="https://www.worldfinancialgroup.com/solutions/life-insurance-101"
+                    class="inline-block mt-6 bg-white text-[#014784] font-semibold px-6 py-2 rounded-full hover:bg-gray-100 transition">
+                    Learn More About Life Insurance
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retirement Strategies -->
+    <section class="py-16 bg-red-50">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+            <!-- Text -->
+            <div class="md:w-1/2 order-2 md:order-1">
+                <h2 class="text-3xl font-bold text-[#B91C1C] mb-4">Retirement Strategies</h2>
+                <p class="text-gray-700 mb-4">
+                    At WFG, our team can help you map out a strategy for the retirement you’ve always envisioned.
+                    Whether you’re just starting to save or refining your existing retirement proposal, we’ll work with
+                    you to create a strategy that aligns with your goals to help you enjoy your golden years with
+                    confidence. Your WFG agent may utilize:
+                </p>
+                <ul class="list-disc ml-5 text-gray-700 space-y-1">
+                    <li>Annuities</li>
+                    <li>Registered Retirement Savings Plans (Canada Only)</li>
+                    <li>Tax-Free Savings Accounts (Canada Only)</li>
+                </ul>
+                <a href="https://www.worldfinancialgroup.com/solutions/retirement-strategies"
+                    class="inline-block mt-6 bg-[#B91C1C] text-white font-semibold px-6 py-2 rounded-full hover:bg-[#9f1414] transition">
+                    Prepare for Your Retirement
+                </a>
+            </div>
+            <!-- Image -->
+            <div class="md:w-1/2 order-1 md:order-2">
+                <img src="./assets/products-services/family-enjoying-retirement.webp"
+                    alt="Family enjoying retirement outdoors" class="rounded-2xl shadow-lg w-full object-cover" />
+            </div>
+        </div>
+    </section>
+
+    <!-- College Funding Plans -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+            <!-- Image -->
+            <div class="md:w-1/2">
+                <img src="./assets/products-services/education-savings-plan-grad.webp"
+                    alt="Graduate representing education savings plan"
+                    class="rounded-2xl shadow-lg w-full object-cover" />
+            </div>
+            <!-- Text -->
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold text-[#014784] mb-4">College Funding Plans</h2>
+                <p class="text-gray-700 mb-4">
+                    With the rising costs of higher education, it’s now more important than ever to save for college
+                    early. Whether preparing to send your first or fifth child to college, our team can refer you to
+                    resources to assist.
+                </p>
+                <a href="https://www.worldfinancialgroup.com/solutions/education-planning"
+                    class="inline-block mt-6 bg-[#014784] text-white font-semibold px-6 py-2 rounded-full hover:bg-[#013866] transition">
+                    Plan For Your Education
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Strategies -->
+    <section class="py-16 bg-[#014784] text-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+            <!-- Text -->
+            <div class="md:w-1/2 order-2 md:order-1">
+                <h2 class="text-3xl font-bold mb-4">Business Strategies</h2>
+                <p class="mb-4">
+                    As a new business owner, it takes more than passion and perseverance to grow your brand. For the
+                    small business owner, we can assist you, your employees, and your business, with:
+                </p>
+                <ul class="list-disc ml-5 space-y-1">
+                    <li>Insurance Strategies</li>
+                    <li>Retirement Strategies</li>
+                    <li>Executive Compensation (U.S. Only)</li>
+                    <li>Business Continuation Programs (U.S. Only)</li>
+                </ul>
+                <a href="/solutions/business-strategies"
+                    class="inline-block mt-6 bg-white text-[#014784] font-semibold px-6 py-2 rounded-full hover:bg-gray-100 transition">
+                    Learn More
+                </a>
+            </div>
+            <!-- Image -->
+            <div class="md:w-1/2 order-1 md:order-2">
+                <img src="./assets/products-services/entrepreneur-talking-business-strategies.webp"
+                    alt="Entrepreneur discussing strategies" class="rounded-2xl shadow-lg w-full object-cover" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Estate Preservation -->
+    <section class="py-16 bg-red-50">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+            <!-- Image -->
+            <div class="md:w-1/2">
+                <img src="./assets/products-services/gettyimages.webp" alt="Family estate preservation"
+                    class="rounded-2xl shadow-lg w-full object-cover" />
+            </div>
+            <!-- Text -->
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold text-[#B91C1C] mb-4">Estate Preservation</h2>
+                <p class="text-gray-700 mb-4">
+                    We help you keep more of what you’ve earned. Working with your tax and legal professionals, we’ll
+                    develop a strategy to help preserve your legacy and avoid it decreasing due to federal and, in the
+                    United States, estate taxes utilizing various products:
+                </p>
+                <ul class="list-disc ml-5 text-gray-700 space-y-1">
+                    <li>Charitable Strategies & Trusts (U.S. Only)</li>
+                    <li>Life Insurance Strategies (U.S. Only)</li>
+                    <li>Wealth Replacement Strategies (U.S. Only)</li>
+                    <li>Annuities (Canada Only)</li>
+                </ul>
+                <a href="/solutions/estate-preservation"
+                    class="inline-block mt-6 bg-[#B91C1C] text-white font-semibold px-6 py-2 rounded-full hover:bg-[#9f1414] transition">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative text-black py-20 text-center">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="relative container mx-auto px-6">
+            <p class="mt-6 text-lg opacity-90 max-w-2xl mx-auto text-gray-500">
+                Neither World Financial Group Insurance Agency, LLC, its subsidiaries, nor its agents may provide tax,
+                estate planning, or
+                legal advice. Anyone to whom this material is promoted, marketed, or recommended should consult with and
+                rely on their own tax and legal
+                professional regarding their particular situation and the concepts presented herein.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- Providers Section -->
+    <section class="py-16 bg-gray-50 text-gray-900">
+        <div class="container mx-auto px-6 lg:px-12">
+
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4">
+                    <span class="text-yellow-500">WFG's Network</span> of Providers
+                </h2>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    World Financial Group offers a vast selection of financial strategies and services through
+                    relationships with some of the most well-known providers and carriers in the industry. Each provider
+                    we partner with must be rated <span class="font-semibold text-yellow-500">A or higher</span> by
+                    industry standards.
+                </p>
+            </div>
+
+            <!-- U.S. Providers -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-yellow-500 inline-block">
+                    U.S. Providers
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
+                    <img src="./assets/products-services/transamerica.png" alt="Transamerica"
+                        class="h-32 w-auto mx-auto " />
+                    <img src="./assets/products-services/crump.png" alt="Crump" class="h-20 w-auto mx-auto " />
+                    <img src="./assets/products-services/nationwide.png" alt="Nationwide"
+                        class="h-24 w-auto mx-auto " />
+                    <img src="./assets/products-services/pacific-life.png" alt="Pacific Life"
+                        class="h-24 w-auto mx-auto " />
+                    <img src="./assets/products-services/everest.png" alt="Everest" class="h-20 w-auto mx-auto " />
+                    <img src="./assets/products-services/ams.png" alt="AMS Financial Solutions"
+                        class="h-20 w-auto mx-auto " />
+                </div>
+            </div>
+
+            <!-- Canada Providers -->
+            <div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-yellow-500 inline-block">
+                    Canada Providers
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-8 items-center justify-items-center">
+                    <img src="./assets/products-services/ivari.png" alt="Ivari" class="h-20 w-auto mx-auto " />
+                    <img src="./assets/products-services/equitable.png" alt="Equitable" class="h-20 w-auto mx-auto " />
+                    <img src="./assets/products-services/bmo.png" alt="BMO" class="h-16 w-auto mx-auto " />
+                    <img src="./assets/products-services/ia-financial.png" alt="IA Financial"
+                        class="h-20 w-auto mx-auto " />
+                    <img src="./assets/products-services/everest.png" alt="Everest" class="h-20 w-auto mx-auto " />
+                    <img src="./assets/products-services/cpp-foresters.png" alt="CPP Foresters"
+                        class="h-20 w-auto mx-auto " />
+                    <img src="./assets/products-services/empire-life.png" alt="Empire Life"
+                        class="h-20 w-auto mx-auto " />
+                </div>
+            </div>
+
+            <!-- Footer Note -->
+            <div class="mt-12 text-center text-gray-500 text-sm max-w-4xl mx-auto">
+                <p>
+                    The city and state locations of the U.S. companies are: AMS Financial Solutions, Baton Rouge,
+                    Louisiana; Crump, Harrisburg, Pennsylvania; Everest Funeral Package, LLC, Houston, Texas; Nationwide
+                    Life Insurance Company, Columbus, Ohio; Pacific Life Insurance Company, Newport Beach, California;
+                    Transamerica Life Insurance Company, Cedar Rapids, Iowa.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-200 text-gray-900">
+        <div class="container mx-auto px-6 lg:px-12">
+
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">
+                    <strong>Frequently Asked </strong><span class="text-[#014785]"><strong>Questions</strong></span>
+                </h2>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    Find answers to common questions about WFG's financial solutions and services.
+                </p>
+            </div>
+
+            <!-- FAQ Items -->
+            <div class="max-w-4xl mx-auto space-y-4">
+
+                <!-- FAQ Item 1 -->
+                <div class="border border-gray-200 rounded-lg">
+                    <button
+                        class="w-full text-left px-6 py-4 font-semibold text-gray-800 hover:text-[#014785] focus:outline-none flex justify-between items-center faq-toggle">
+                        Can I take advantage of multiple financial solutions with WFG?
+                        <svg class="w-5 h-5 transition-transform duration-300 transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="px-6 py-4 text-gray-600 hidden faq-content">
+                        Absolutely! When you contact a local independent WFG agent for the first time, you can provide
+                        them with your needs and goals. For example, you can apply for life insurance while also setting
+                        up your long-term retirement strategy. Or you can discuss how to save for your child’s college
+                        fund while learning about business strategies if you are a small business owner.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-gray-200 rounded-lg">
+                    <button
+                        class="w-full text-left px-6 py-4 font-semibold text-gray-800 hover:text-[#014785] focus:outline-none flex justify-between items-center faq-toggle">
+                        How much life insurance do I need?
+                        <svg class="w-5 h-5 transition-transform duration-300 transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="px-6 py-4 text-gray-600 hidden faq-content">
+                        Determining the right amount of <a
+                            href="https://www.worldfinancialgroup.com/finance-fundamentals/how-does-life-insurance-work"
+                            class="text-[#014785] underline">life insurance coverage</a> depends on individual
+                        circumstances and financial goals. Consider your health, age, debt, income replacement needs,
+                        and current savings when choosing a policy.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-gray-200 rounded-lg">
+                    <button
+                        class="w-full text-left px-6 py-4 font-semibold text-gray-800 hover:text-[#014785] focus:outline-none flex justify-between items-center faq-toggle">
+                        Can WFG help me with tax planning and preparation?
+                        <svg class="w-5 h-5 transition-transform duration-300 transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="px-6 py-4 text-gray-600 hidden faq-content">
+                        Tax planning is not a service offered directly by WFG. However, your agent can work alongside
+                        your professional tax and legal partners to minimize taxes and maximize the estate value for
+                        beneficiaries.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-gray-200 rounded-lg">
+                    <button
+                        class="w-full text-left px-6 py-4 font-semibold text-gray-800 hover:text-[#014785] focus:outline-none flex justify-between items-center faq-toggle">
+                        How can I start saving with a limited budget?
+                        <svg class="w-5 h-5 transition-transform duration-300 transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="px-6 py-4 text-gray-600 hidden faq-content">
+                        Set clear financial goals and create a budget. Assess your income and expenses to identify how
+                        much you can save regularly. Focus on long-term growth and contact a WFG agent to learn
+                        strategies suitable for your budget.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="border border-gray-200 rounded-lg">
+                    <button
+                        class="w-full text-left px-6 py-4 font-semibold text-gray-800 hover:text-[#014785] focus:outline-none flex justify-between items-center faq-toggle">
+                        Can I switch to a different life insurance policy if my needs change?
+                        <svg class="w-5 h-5 transition-transform duration-300 transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="px-6 py-4 text-gray-600 hidden faq-content">
+                        Yes! WFG agents can help adjust your policy as your needs or family circumstances change over
+                        time. Contact your licensed agent for guidance and options.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-[#014785] text-white py-16 px-6 md:px-16 lg:px-32">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12">
+
+            <!-- Logo & Agent Login -->
+            <div class="flex flex-col items-center space-y-4">
+                <a href="#" target="_self">
+                    <img src="./assets/transparent-logo.png" alt="Miliare Group Logo"
+                        class="w-40 md:w-48 object-contain">
+                </a>
+                <a href="#" target="_blank"
+                    class="bg-white text-[#014785] font-semibold py-2 px-6 rounded-full hover:bg-gray-200 transition">
+                    Agent Login ›
+                </a>
+            </div>
+
+            <!-- Legal & Disclaimers -->
+            <div class="flex-1 text-center md:text-left space-y-2 text-sm leading-relaxed">
+                <p>© 2025 The Miliare Group</p>
+                <p>The Miliare Group is an organization comprised of individuals associated with World Financial Group
+                    Insurance Agency, LLC and World Financial Group, Inc., but it is not an affiliated company of WFG.
+                </p>
+                <p>These agents offer insurance products through World Financial Group Insurance Agency LLC, World
+                    Financial Group Insurance Agency of Hawaii, Inc., World Financial Group Insurance Agency of
+                    Massachusetts, Inc., and/or WFG Insurance Agency of Puerto Rico, Inc. – collectively WFGIA.</p>
+                <p>WFGIA Headquarters: 6400 C Street SW, Cedar Rapids IA 52499. Phone: 770.453.9300. Miliare Group
+                    Headquarters: 2280 Wardlow Cir # 205, Corona, CA 92880</p>
+                <p>Tax and Legal Disclosure: Neither World Financial Group nor its agents may provide tax or legal
+                    advice. Consult your own independent tax/legal professional.</p>
+                <p>SUCCESS / RESULTS FOOTNOTE: Many people have experienced various levels of success with WFG.
+                    Individual results may vary and are not representative of all participants.</p>
+                <p>3508958</p>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="flex justify-center md:justify-end items-start mt-4 md:mt-0">
+                <a href="#top"
+                    class="bg-white text-[#014785] p-3 rounded-full hover:bg-gray-200 transition flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-6 h-6">
+                        <path fill="currentColor"
+                            d="M132.5 54.009L100 20 67.5 54.009l8.692 8.526 17.023-17.471V180h13.57V44.725l17.023 17.81 8.692-8.526z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/custom.js"></script>
+</body>
+
+</html>
