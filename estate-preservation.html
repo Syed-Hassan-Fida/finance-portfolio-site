@@ -4,17 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wealth Builders</title>
+    <title>The Wealth Builders - Estate Preservation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <style>
-        /* Custom Glassmorphism effect */
+        /* Glassmorphism */
         .glass {
             backdrop-filter: blur(12px) saturate(180%);
             -webkit-backdrop-filter: blur(12px) saturate(180%);
             background-color: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 215, 0, 0.3);
-            /* Gold border */
+            transition: all 0.3s ease-in-out;
+        }
+
+        .glass:hover {
+            transform: rotateX(2deg) rotateY(2deg) scale(1.03);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.4);
         }
 
         .hover-glow:hover {
@@ -24,139 +29,203 @@
 
         .accent-gold {
             color: #FFD700;
+            position: relative;
+        }
+
+        .accent-gold::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            height: 3px;
+            width: 0;
+            background-color: #FFD700;
+            transition: width 0.4s ease;
+        }
+
+        .accent-gold:hover::after {
+            width: 100%;
         }
 
         .btn-gold {
             background: #FFD700;
             color: black;
+            transition: all 0.3s ease-in-out;
         }
 
         .btn-gold:hover {
             background: #FFC300;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Fade-in animation */
+        .animate-fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Parallax background */
+        .hero-bg {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Video hover overlay */
+        .video-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .video-card .overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-card:hover .overlay {
+            opacity: 1;
         }
     </style>
 </head>
 
-<body class="bg-black text-white font-sans">
+<body class="bg-black text-white font-sans antialiased leading-relaxed">
+
     <!-- Hero Section -->
-    <section class="relative min-h-[80vh] md:min-h-[75vh] bg-cover bg-center"
+    <section class="relative min-h-[80vh] md:min-h-[75vh] hero-bg"
         style="background-image: url('./assets/estate-preservation/banner.webp');">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
 
         <!-- Navbar -->
         <nav class="z-50 relative glass p-4 rounded-b-3xl shadow-lg mx-4 mt-4">
             <div class="max-w-7xl mx-auto flex justify-between items-center">
-
                 <!-- Logo -->
-                <a href="#">
-                    <img src="./assets/transparent-logo.png" alt="The Wealth Builders Logo" class="w-32 md:w-40">
-                </a>
+                <a href="#"><img src="./assets/transparent-logo.png" alt="Logo" class="w-32 md:w-40"></a>
 
-                <!-- Right side: Nav Links + Agent Link -->
-                <div class="flex items-center space-x-6">
+                <!-- Nav Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="./index.html"
+                        class="text-white font-semibold transition-colors hover:text-yellow-500 py-2 px-3 rounded">Home</a>
+                    <a href="./vision-mission.html"
+                        class="text-white font-semibold transition-colors hover:text-yellow-500 py-2 px-3 rounded">Vision
+                        & Mission</a>
+                    <a href="./products-providers.html"
+                        class="text-white font-semibold transition-colors hover:text-yellow-500 py-2 px-3 rounded">Products
+                        & Providers</a>
+                    <a href="./platform-model.html"
+                        class="text-white font-semibold transition-colors hover:text-yellow-500 py-2 px-3 rounded">Platform
+                        & Model</a>
 
-                    <!-- Nav Links -->
-                    <div class="hidden md:flex space-x-6">
-                        <a href="./index.html"
-                            class="text-white font-semibold hover-glow transition py-2 px-3 rounded">Home</a>
-                        <a href="./vision-mission.html"
-                            class="text-white font-semibold hover-glow transition py-2 px-3 rounded">Vision &
-                            Mission</a>
-                        <a href="./products-providers.html"
-                            class="text-white font-semibold hover-glow transition py-2 px-3 rounded">Products &
-                            Providers</a>
-                        <a href="./platform-model.html"
-                            class="text-white font-semibold hover-glow transition py-2 px-3 rounded">Platform &
-                            Model</a>
-
-                        <!-- Dropdown -->
-                        <div x-data="{ open: false }" class="relative">
-                            <button @click="open = !open"
-                                class="text-white font-semibold hover-glow transition py-2 px-3 rounded flex items-center">
-                                Client & Solutions
-                                <svg class="w-4 h-4 ml-1 transform" :class="open ? 'rotate-180' : ''" fill="none"
-                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </button>
-                            <div x-show="open" x-cloak
-                                class="absolute left-0 mt-2 w-64 glass rounded-lg shadow-lg z-50">
-                                <a href="./products-services.html"
-                                    class="block px-4 py-3 hover:bg-white/20 transition rounded">Products & Services</a>
-                                <a href="./retirement-strategies.html"
-                                    class="block px-4 py-3 hover:bg-white/20 transition rounded">Retirement
-                                    Strategies</a>
-                                <a href="./education-planning.html"
-                                    class="block px-4 py-3 hover:bg-white/20 transition rounded">Education Planning</a>
-                                <a href="./business-strategies.html"
-                                    class="block px-4 py-3 hover:bg-white/20 transition rounded">Business Strategies</a>
-                                <a href="./estate-preservation.html"
-                                    class="block px-4 py-3 hover:bg-white/20 transition rounded">Estate Preservation</a>
-                                <a href="./client-testimonials.html"
-                                    class="block px-4 py-3 hover:bg-white/20 transition rounded">Client Testimonials</a>
-                            </div>
+                    <!-- Dropdown -->
+                    <div x-data="{ open: false }" class="relative">
+                        <button @click="open = !open"
+                            class="text-white font-semibold transition-colors hover:text-yellow-500 py-2 px-3 rounded flex items-center">
+                            Client & Solutions
+                            <svg class="w-4 h-4 ml-1 transform" :class="open ? 'rotate-180' : ''" fill="none"
+                                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div x-show="open" x-cloak
+                            class="absolute left-0 mt-2 w-64 glass rounded-lg shadow-lg z-50 flex flex-col">
+                            <a href="./products-services.html"
+                                class="block px-4 py-3 hover:bg-white/20 transition-colors rounded">Products &
+                                Services</a>
+                            <a href="./retirement-strategies.html"
+                                class="block px-4 py-3 hover:bg-white/20 transition-colors rounded">Retirement
+                                Strategies</a>
+                            <a href="./education-planning.html"
+                                class="block px-4 py-3 hover:bg-white/20 transition-colors rounded">Education
+                                Planning</a>
+                            <a href="./business-strategies.html"
+                                class="block px-4 py-3 hover:bg-white/20 transition-colors rounded">Business
+                                Strategies</a>
+                            <a href="./estate-preservation.html"
+                                class="block px-4 py-3 hover:bg-white/20 transition-colors rounded">Estate
+                                Preservation</a>
+                            <a href="./client-testimonials.html"
+                                class="block px-4 py-3 hover:bg-white/20 transition-colors rounded">Client
+                                Testimonials</a>
                         </div>
-
-                        <a href="./contact.html"
-                            class="text-white font-semibold hover-glow transition py-2 px-3 rounded">Contact</a>
                     </div>
 
-                    <!-- Agent Links Button -->
-                    <a href="#" class="btn-gold font-semibold py-2 px-4 rounded-full hover:shadow-lg transition">
-                        Agent Links
-                    </a>
-
+                    <a href="./contact.html"
+                        class="text-white font-semibold transition-colors hover:text-yellow-500 py-2 px-3 rounded">Contact</a>
                 </div>
+
+                <!-- Agent Links Button -->
+                <a href="#" class="btn-gold font-semibold py-2 px-4 rounded-full">Agent Links</a>
             </div>
         </nav>
 
 
         <!-- Hero Text -->
-        <div class="relative z-10 container mx-auto px-6 flex flex-col items-center justify-center text-center mt-24">
+        <div
+            class="relative z-10 container mx-auto px-6 flex flex-col items-center justify-center text-center mt-24 animate-fade-in-up">
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-wide">
                 Estate <span class="accent-gold">Preservation</span>
             </h1>
             <p class="mt-6 text-gray-300 text-lg md:text-xl">Protect Your Wealth, Secure Your Legacy</p>
+            <a href="#cta"
+                class="btn-gold mt-8 px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse">Get
+                Started</a>
         </div>
     </section>
 
-    <!-- Glassmorphic Sections -->
+    <!-- Glass Info Section -->
     <section class="py-20">
-        <div class="container mx-auto px-6 max-w-5xl glass rounded-3xl p-12 shadow-xl">
+        <div class="container mx-auto px-6 max-w-5xl glass rounded-3xl p-12 shadow-xl animate-fade-in-up">
             <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-8">What is <span class="accent-gold">Estate
                     Preservation?</span></h2>
             <p class="text-gray-200 text-lg leading-relaxed">
                 Estate preservation refers to managing, organizing, and protecting your assets and wishes while alive.
-                Your estate includes property, money, business interests, investments, and any other assets.
-                It also considers care for minors, pets, and charitable contributions.
-                <a href="https://www.worldfinancialgroup.com/solutions/retirement-strategies" target="_blank"
-                    class="accent-gold underline hover:text-yellow-400">Anyone with property or goods</a>
+                Your estate includes property, money, business interests, investments, and any other assets. It also
+                considers
+                care for minors, pets, and charitable contributions.
+                <a href="#" target="_blank" class="accent-gold underline hover:text-yellow-400">Anyone with property or
+                    goods</a>
                 should explore estate preservation, regardless of wealth size.
             </p>
             <p class="mt-6 text-gray-300">
-                Wealth preservation helps protect your hard-earned assets for yourself and your heirs. Every
-                individual’s situation is unique, so personalized strategies ensure your legacy remains secure.
+                Wealth preservation helps protect your hard-earned assets for yourself and your heirs. Personalized
+                strategies
+                ensure your legacy remains secure.
             </p>
         </div>
     </section>
 
+    <!-- Q&A + Image -->
     <section class="py-20">
         <div
-            class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center glass rounded-3xl p-12 shadow-xl">
+            class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center glass rounded-3xl p-12 shadow-xl animate-fade-in-up">
             <div>
                 <h2 class="text-4xl font-extrabold mb-6">Questions <span class="accent-gold">You May Have</span></h2>
                 <ul class="list-disc list-inside space-y-4 text-gray-200 text-lg">
                     <li>How do I begin to decide who gets what from my assets?</li>
                     <li>What are settlement costs?</li>
                     <li>How do trusts, gifts, and other options help my heirs?</li>
-                    <li>
-                        <a href="https://www.worldfinancialgroup.com/solutions/life-insurance-101" target="_blank"
-                            class="accent-gold hover:text-yellow-400 underline">
-                            Can life insurance help
-                        </a> with estate preservation?
-                    </li>
-                    <li>Do I consider health care when looking at estate preservation? The greatest challenge is
-                        defining what you want to achieve with your estate — and that’s where WFG agents can help.</li>
+                    <li><a href="#" class="accent-gold hover:text-yellow-400 underline">Can life insurance help</a> with
+                        estate preservation?</li>
+                    <li>Do I consider health care when looking at estate preservation?</li>
                 </ul>
             </div>
             <div class="flex justify-center">
@@ -166,49 +235,16 @@
         </div>
     </section>
 
-    <section class="py-20">
-        <div
-            class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center glass rounded-3xl p-12 shadow-xl">
-            <div class="flex justify-center order-2 lg:order-1">
-                <img src="./assets/estate-preservation/gettyimages-1.webp" alt="Financial Consultation"
-                    class="rounded-2xl shadow-lg w-full max-w-md">
-            </div>
-            <div class="order-1 lg:order-2">
-                <h2 class="text-4xl font-extrabold mb-6">What <span class="accent-gold">We Offer</span></h2>
-                <p class="text-gray-200 mb-6">Estate preservation helps protect your assets and secure your family's
-                    financial future. Our licensed agents offer tailored strategies that align with your goals.</p>
-                <ul class="list-disc list-inside space-y-3 text-gray-200">
-                    <li>Charitable Strategies & Trusts (U.S. Only)</li>
-                    <li>Life Insurance Trusts (U.S. Only)</li>
-                    <li>Wealth Replacement Trusts (U.S. Only)</li>
-                    <li>Life Insurance (Canada Only)</li>
-                    <li>Annuities (Canada Only)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20">
-        <div class="container mx-auto px-6 glass rounded-3xl p-12 shadow-xl text-center max-w-4xl">
-            <p class="text-gray-200 text-lg leading-relaxed">With a proper estate preservation strategy, you can
-                minimize costs and ensure your savings meet your needs. Work with your agent to find the best solutions
-                for both your present and your loved ones’ future.</p>
-            <p class="mt-6 text-gray-400">Always consult your tax and legal professionals for tailored advice. <span
-                    class="accent-gold font-semibold">WFGIA and its agents do not provide tax or legal services.</span>
-            </p>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-24 text-center">
-        <div class="container mx-auto px-6 glass rounded-3xl p-12 shadow-xl max-w-3xl">
+    <!-- CTA Section -->
+    <section id="cta" class="py-24 text-center">
+        <div class="container mx-auto px-6 glass rounded-3xl p-12 shadow-xl max-w-3xl animate-fade-in-up">
             <img src="./assets/estate-preservation/cta_accent.webp" alt="We Are Here to Help"
                 class="mx-auto mb-10 w-60 rounded-xl shadow-lg">
             <h3 class="text-4xl font-bold mb-6">We Are <span class="accent-gold">Here to Help</span></h3>
             <p class="text-lg text-gray-200 mb-10">Need guidance in choosing the right products and services for your
                 financial goals? Our experts are ready to assist you in creating a confident, secure future.</p>
             <a href="#"
-                class="btn-gold font-semibold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">Get
+                class="btn-gold font-semibold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse">Get
                 Started</a>
         </div>
     </section>
